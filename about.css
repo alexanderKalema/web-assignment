@@ -1,0 +1,134 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 0 20px;
+}
+
+.imgDiv {
+    margin-right: 10px;
+    border-radius: 30pt 0 0 30pt;
+    overflow: hidden;
+    background-color: red;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+p {
+    font-size: 14px;
+    text-align: justify;
+    padding: 0 10px;
+}
+
+main {
+    padding: 1rem 2.5%;
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    flex: 90%;
+}
+
+h1, h2, h3 {
+    font-family: Poppins, sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    width: 100%;
+    padding: 25px 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    border-radius: 30pt;
+    background-color: #eee;
+    width: 98%;
+}
+
+article {
+    padding: 5px 10px;
+}
+
+.aside {
+    flex: 10%;
+    height: 100%;
+    border-left: 1px solid #ccc;
+
+}
+
+.follow {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#social {
+    display: flex;
+    flex-grow: 0.5;
+    justify-content: space-evenly;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 20px 0px;
+
+}
+
+svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.developers-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.developers-list li {
+    width: 300px;
+    margin: 20px;
+    background-color: #F5F5F5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.developers-list li:hover {
+    transform: translateY(-10px);
+}
+
+.developers-list img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.developers-list h2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.developers-list p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #999;
+}
