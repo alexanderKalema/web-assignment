@@ -82,6 +82,7 @@ main{
  .search-icon{
     display: inline-flex;
     align-items: center;
+    transform: translate(-10px,2px);
  }
  .share-us{
     font-size: 25px;
