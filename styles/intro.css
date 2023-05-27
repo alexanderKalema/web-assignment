@@ -112,7 +112,7 @@ main {
 
 .letter:hover {
     transform: translateY(-1rem);
-    background: -webkit-linear-gradient(120deg, hsl(19, 90%, 52%), hsl(56, 100%, 50%));
+    color: -webkit-linear-gradient(120deg, hsl(19, 90%, 52%), hsl(56, 100%, 50%));
     -webkit-text-fill-color: gold;
     cursor: default;
 }
