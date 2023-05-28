@@ -26,9 +26,10 @@ body{
 .contact-info{
   color: #fff;
   max-width: 500px;
-  line-height: 65px;
+  line-height: 60px;
   padding-left: 50px;
   font-size: 18px;
+  transform: translateY(25px);
 }
 
 .contact-info i{
