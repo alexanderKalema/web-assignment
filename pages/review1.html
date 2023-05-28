@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/review1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+
+    
+</style>
+    <title>Review page</title>
+</head>
+<body>
+    <div class="background-slider">
+      <img src="../assets/got/got2.png" class="bg-image">
+      <img src="../assets/got/got3.jpg" class="bg-image">
+      <img src="../assets/got/got6.jpg" class="bg-image">
+      <img src="../assets/got/got4.jpg" class="bg-image">
+      <img src="../assets/got/got5.jpg" class="bg-image">
+      <img src="../assets/got/got7.jpg" class="bg-image">
+      <img src="../assets/got/got8.jpg" class="bg-image">
+      <img src="../assets/got/got9.jpg" class="bg-image">
+      <img src="../assets/got/got10.jpg" class="bg-image">
+      <img src="../assets/got/got11.jpg" class="bg-image">
+       <img src="../assets/got/got1.jpg" class="bg-image">
+      <img src="../assets/got/got12.jpg" class="bg-image">
+      
+      
+        
+        <div class="prev">&#10094;</div>
+        <div class="next">&#10095;</div>
+    </div>
+    
+
+   
+        <div class="favorite-btn" id="favoriteBtn" onclick="handleLikeClick(this)">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="bookmark-movie" id="bookmark-movie">
+            <div class="watchlist-btn" id="watchlistBtn">
+                <i class="icon fa fa-bookmark"></i>
+                  <i class="check fa fa-plus"></i>
+            </div>
+        </div>
+        
+        <div class="message-box" id="messageBox"></div>
+         
+    
+    <div class="movie-info">
+        <div class="left-section">
+            <h1><span class="underline">Game of Thrones</span></h1>
+            <h2><p id="rating-paragraph"> Rating: 4.5/5</p></h2>
+            <div class="tags">
+
+                <span class="underline"> <b>Genre:</b> </span>&nbsp;&nbsp;
+                 <span>Action</span>
+                 <span class="parallelogram"></span> 
+                 <span>Adventure</span>
+                 <span class="parallelogram"></span> 
+                 <span>Fantasy</span>
+             </div>
+             <br>
+           <div class="stars" id="stars">
+            Rate 
+            <i class="star fas fa-star" data-index="0"></i>
+            <i class="star fas fa-star" data-index="1"></i>
+            <i class="star fas fa-star" data-index="2"></i>
+            <i class="star fas fa-star" data-index="3"></i>
+            <i class="star fas fa-star" data-index="4"></i>
+          </div>
+          <div class="desc-movie">
+            <p>Game of Thrones is an epic television series set in the medieval world of Westeros, where noble families compete for power and survival in a brutal and unforgiving landscape. The show is known for its richly drawn characters, political intrigue, and shocking plot twists."</p>
+          </div>
+             
+        </div>
+    
+        <div class="right-section">
+               
+                
+                 
+                  <div class="video-container">
+                    <div class="watch-trailer-btn" id="playButton">
+                        <i class="fas fa-play"></i>
+                      </div>
+             
+                    <div class="video-player">
+                      <div class="video-frame">
+                        <video src="../assets/got/gottrailer.mp4" id="video" controls ></video>
+                        <button class="close-btn">x</button>
+                      </div>
+                    </div>
+                  </div>
+                  <p>Watch Trailer</p>
+              
+            
+        </div>
+    </div>
+    <div class="page-navigation">
+        <div class="page-prev">&#10094;</div>
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            
+            
+        </div>
+        <a href="review2.html"><div class="page-next">&#10095;</div></a>
+    </div>
+    <script src="../js/review1.js" >
+      
+    </script>
+</body>
+</html>
