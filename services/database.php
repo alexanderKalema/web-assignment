@@ -9,7 +9,7 @@ class Database
     public static ?Database $db = null;
     public function __construct()
     {
-        $this->pdo = new \PDO('mysql:host=localhost;port=3306;dbname=movie_chief', 'root', 'Maya@1jesus');
+        $this->pdo = new \PDO('mysql:host=localhost;port=3306;dbname=movie_chief', 'root', '');
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         self::$db = $this;
     }
