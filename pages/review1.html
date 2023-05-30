@@ -23,13 +23,12 @@
       <img src="../assets/got/got9.jpg" class="bg-image">
       <img src="../assets/got/got10.jpg" class="bg-image">
       <img src="../assets/got/got11.jpg" class="bg-image">
-       <img src="../assets/got/got1.jpg" class="bg-image">
+      <img src="../assets/got/got1.jpg" class="bg-image">
       <img src="../assets/got/got12.jpg" class="bg-image">
       
       
-        
-        <div class="prev">&#10094;</div>
-        <div class="next">&#10095;</div>
+      <div class="prev">&#10094;</div>
+      <div class="next">&#10095;</div>
     </div>
     
 
@@ -50,25 +49,32 @@
     <div class="movie-info">
         <div class="left-section">
             <h1><span class="underline">Game of Thrones</span></h1>
-            <h2><p id="rating-paragraph"> Rating: 4.5/5</p></h2>
+            <div class="available"><em>Available on:</em> &nbsp; 
+              <span><em>Netflix</em></span>
+              <span class="parallelogram"></span> 
+              <span><em>HBO Max</em></span>
+            </div>
+            <h2><p id="rating-paragraph" style="font-size: 1.2rem;"> Rating: 4.5/5</p></h2>
             <div class="tags">
 
-                <span class="underline"> <b>Genre:</b> </span>&nbsp;&nbsp;
-                 <span>Action</span>
+                <span> <b><em>Genre:</em></b> </span>&nbsp;&nbsp;
+                 <span><em>Action</em></span>
                  <span class="parallelogram"></span> 
-                 <span>Adventure</span>
+                 <span><em>Adventure</em></span>
                  <span class="parallelogram"></span> 
-                 <span>Fantasy</span>
+                 <span><em>Fantasy</em></span>
              </div>
              <br>
            <div class="stars" id="stars">
-            Rate 
             <i class="star fas fa-star" data-index="0"></i>
             <i class="star fas fa-star" data-index="1"></i>
             <i class="star fas fa-star" data-index="2"></i>
             <i class="star fas fa-star" data-index="3"></i>
             <i class="star fas fa-star" data-index="4"></i>
+              <button class="rate-btn"><p class="rate-text">Rate</p></button>
           </div>
+
+          
           <div class="desc-movie">
             <p>Game of Thrones is an epic television series set in the medieval world of Westeros, where noble families compete for power and survival in a brutal and unforgiving landscape. The show is known for its richly drawn characters, political intrigue, and shocking plot twists."</p>
           </div>
@@ -76,36 +82,41 @@
         </div>
     
         <div class="right-section">
-               
-                
-                 
-                  <div class="video-container">
-                    <div class="watch-trailer-btn" id="playButton">
-                        <i class="fas fa-play"></i>
-                      </div>
-             
-                    <div class="video-player">
-                      <div class="video-frame">
-                        <video src="../assets/got/gottrailer.mp4" id="video" controls ></video>
-                        <button class="close-btn">x</button>
-                      </div>
-                    </div>
+             <div class="trailer">
+              <div class="video-container">
+                <div class="watch-trailer-btn" id="playButton">
+                    <i class="fas fa-play"></i>
+                    
+                 </div><br>
+                  <div><em>Watch&nbsp;Trailer</em></div>
+                  
+         
+                <div class="video-player">
+                  <div class="video-frame">
+                    <video src="../assets/got/gottrailer.mp4" id="video" controls ></video>
+                    <button class="close-btn">x</button>
                   </div>
-                  <p>Watch Trailer</p>
-              
+                </div>
+              </div>
+             </div>
+             <div class="scenes">
+               <h2 class="scene-h"><span class="scenes-underline">Cut Scenes</span></h2>
+               <div class="scene-images">
+                  <div class="scene-img">
+                    <img src="../assets/got/got3.jpg">
+                  </div>
+                  <div class="scene-img">
+                    <img src="../assets/got/got3.jpg">
+                  </div>
+                  <div class="scene-img">
+                    <img src="../assets/got/got3.jpg">
+                  </div>
+               </div>
+             </div>   
             
         </div>
     </div>
-    <div class="page-navigation">
-        <div class="page-prev">&#10094;</div>
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            
-            
-        </div>
-        <a href="review2.html"><div class="page-next">&#10095;</div></a>
-    </div>
+
     <script src="../js/review1.js" >
       
     </script>
