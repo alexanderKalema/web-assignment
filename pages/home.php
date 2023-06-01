@@ -61,7 +61,7 @@
 
     <?php
 
-    require_once '../services/movie_api.php';
+    require_once '../services/apis/movie_api.php';
 
     $categories = ['popular', 'top_rated', 'upcoming'];
 
