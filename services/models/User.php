@@ -6,7 +6,7 @@ class User
 
     public string $password;
     public string $username;
-    public int $age;
+    public string $dob;
     public ?array $watchList;
     public string $gender;
 
@@ -16,8 +16,8 @@ class User
         $this->email = $data['email'];
         $this->password = $data['password'];
         $this->username = $data['username'];
-        $this->watchList = $data['watchList']?? null;
-        $this->age = $data['age'];
+        $this->watchList = $data['watchList'] ?? null;
+        $this->dob = $data['dob'];
         $this->gender = $data['gender'];
     }
 
