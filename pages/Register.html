@@ -13,7 +13,23 @@
     <div class="image-section"></div>
     <div class="form-section">
         <h1>Create an Account</h1>
-        <form action="../services/authentication.php" method="POST">
+        <form action="../services/authentication.php" method="POST" enctype="multipart/form-data">
+
+
+            <div class="avatar-wrapper">
+                <img src="../assets/default.png" alt="Profile Avatar" id="avatar-preview" class="avatar" style="
+    width:120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+
+">
+            </div>
+            <div class="choose-file">
+                <input type="file" id="avatar" name="image" accept="image/*" onchange="previewImage(event)">
+            </div>
+
+
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
             <label for="email">Email</label>
@@ -29,14 +45,31 @@
             </select>
             <label for="dob">Date of birth</label>
             <input type="date" id="dob" name="dob" required>
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
             <button type="submit">Register</button>
             <input type="hidden" name="action" value="register">
         </form>
         <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
-
-
     </div>
+
 </div>
+
+<script>
+    function previewImage(event) {
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('avatar-preview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    document.getElementById('choose').addEventListener('click', () => {
+        previewImage(event);
+    });
+</script>
 </body>
 
 </html>

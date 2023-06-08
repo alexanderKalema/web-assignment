@@ -18,6 +18,16 @@ h1{
     font-family: Bellota, serif;
 }
 
+
+.avatar-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 20px 0px;
+
+}
+
 .container {
     display: flex;
     height: 100vh;
@@ -35,7 +45,6 @@ h1{
 }
 
 .form-section {
-    background-color: #f1f1f1;
     flex: 1;
     margin-left: 50%;
     padding: 3rem;

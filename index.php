@@ -32,9 +32,12 @@ $user_json = json_encode($user);
     margin-right: 50px;
     border-radius: 50%;
     background-size: cover;
-    background-image: url('assets/game (8).jpg');
-
-" > </div>
+    background-image: url(
+    <?php
+    echo "services/server/".$user->path;
+    ?>
+    );
+"> </div>
 
     </a>
 

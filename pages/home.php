@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<?php
+session_start();
+$user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
+$user_json = json_encode($user);
+include "navbar.php"
+?>
 <main>
 
     <div class="slider">
@@ -260,6 +266,19 @@
     </div>
 </main>
 <script>
+
+    let user = <?php echo $user_json; ?>;
+
+    if (user) {
+        document.getElementById("signup").style.display = "none";
+        document.getElementById("profile").style.display = "block";
+    }
+    else {
+        document.getElementById("profile").remove();
+    }
+
+
+
     const slider = document.querySelector(".slider");
     const nextBtn = document.querySelector(".next-btn");
     const prevBtn = document.querySelector(".prev-btn");
