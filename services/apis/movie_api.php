@@ -1,6 +1,5 @@
 <?php
 
-
 function get_movies($category)
 {
 
@@ -28,7 +27,6 @@ function get_movies($category)
 
     $params = array(
         'api_key' => '04a11c37bed080ebfdae72a810bd376e',
-        'id' => 766507,
         'language' => 'en-US',
         'page' => 1,
 
