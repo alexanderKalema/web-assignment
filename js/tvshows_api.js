@@ -38,4 +38,4 @@ async function getTvShows(category) {
   }
   function getGenreNames(genreIds, genres) {
     return genreIds.map(id => genres.find(genre => genre.id === id).name).join(', ');
-  }
+  } 

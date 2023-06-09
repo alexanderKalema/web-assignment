@@ -17,7 +17,7 @@ function get_movies($category) {
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($curl);
-
+ 
     if (curl_error($curl)) {
         $error_msg = curl_error($curl);
     }

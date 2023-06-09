@@ -44,7 +44,7 @@ foreach ($categories as $category) {
         echo '<div class="movie-card">';
         echo '<a href=""><img src="' . $poster_path . '" alt="movie poster"></a>';
         echo '<div class="movie-info">';
-        echo '<h1>' . $title . '</h1>';
+        echo '<h1>' . $title . '</h1>'; 
         echo '</div>';
         echo '<div class="movie-ratings">';
         echo '<p>Genre: ' . $genres_str . '</p>';
