@@ -68,4 +68,4 @@ function get_movies($category)
 
     return $data;
 }
-
+?>
