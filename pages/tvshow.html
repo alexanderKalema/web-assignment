@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/tvshow.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Tv Shows</title>
+</head>
+<body>
+  <div id="tvshows-container"></div>
+  <script src="../js/tvshows_api.js"></script>
+
+  <script>
+
+    async function displayTvShows() {
+      const categories = ['Trending', 'Top Rated', 'Most Popular'];
+      const tvshowsContainer = document.getElementById('tvshows-container');
+      const genres = await getGenres();
+
+      for (const category of categories) {
+        const data = await getTvShows(category);
+
+        const tvshowsDiv = document.createElement('div');
+        tvshowsDiv.classList.add('tvshows');
+
+        const areaNameDiv = document.createElement('div');
+        areaNameDiv.classList.add('area-name');
+
+        const h1 = document.createElement('h1');
+        const span = document.createElement('span');
+        span.classList.add('title');
+        span.textContent = category;
+        h1.appendChild(span);
+        areaNameDiv.appendChild(h1);
+        tvshowsDiv.appendChild(areaNameDiv);
+
+        const containerDiv = document.createElement('div');
+        containerDiv.classList.add('container');
+
+        for (const tvshow of data.results) {
+          const { name, poster_path, first_air_date, vote_average } = tvshow;
+
+          const tvshowCardDiv = document.createElement('div');
+          tvshowCardDiv.classList.add('tvshow-card');
+
+          const img = document.createElement('img');
+          img.src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+          img.alt = 'tv show poster';
+          tvshowCardDiv.appendChild(img);
+
+          const tvshowInfoDiv = document.createElement('div');
+          tvshowInfoDiv.classList.add('tvshow-info');
+          const tvshowName = document.createElement('h1');
+          tvshowName.textContent = name;
+          tvshowInfoDiv.appendChild(tvshowName);
+          tvshowCardDiv.appendChild(tvshowInfoDiv);
+
+          const tvshowRatingsDiv = document.createElement('div');
+          tvshowRatingsDiv.classList.add('tvshow-ratings');
+          const genreNames = getGenreNames(tvshow.genre_ids, genres);
+          const genreP = document.createElement('p');
+          genreP.textContent = `Genres: ${genreNames}`;
+          tvshowRatingsDiv.appendChild(genreP);
+          const firstAirDateP = document.createElement('p');
+          firstAirDateP.textContent = `First Air Date: ${first_air_date}`;
+          tvshowRatingsDiv.appendChild(firstAirDateP);
+          const ratingP = document.createElement('p');
+          ratingP.textContent = `Rating: ${vote_average}`;
+          tvshowRatingsDiv.appendChild(ratingP);
+          tvshowCardDiv.appendChild(tvshowRatingsDiv);
+
+          const divButton = document.createElement('div');
+          divButton.classList.add('div-button');
+          const button = document.createElement('button');
+          button.classList.add('button');
+          button.textContent = 'Read More >';
+          divButton.appendChild(button);
+          tvshowCardDiv.appendChild(divButton);
+
+          containerDiv.appendChild(tvshowCardDiv);
+        }
+
+        tvshowsDiv.appendChild(containerDiv);
+        tvshowsContainer.appendChild(tvshowsDiv);
+      }
+    }
+
+    displayTvShows();
+  </script>
+</body>
+</html>

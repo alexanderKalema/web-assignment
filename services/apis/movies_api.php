@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_movies($category) {
     $apiKey = "04a11c37bed080ebfdae72a810bd376e";
@@ -25,5 +25,25 @@ function get_movies($category) {
     curl_close($curl);
     $data = json_decode($response, true);
     return $data;
+}
+
+function get_genre_name($genre_id) {
+    static $genres = null;
+    $apiKey = "04a11c37bed080ebfdae72a810bd376e";
+    $baseUrl = "https://api.themoviedb.org/3";
+
+    if ($genres === null){        
+        $url = "{$baseUrl}/genre/movie/list?api_key={$apiKey}&language=en-US";
+        $response = json_decode(file_get_contents($url), true);
+        $genres = $response['genres'];
+    }
+
+    foreach ($genres as $genre) {
+        if ($genre['id'] == $genre_id) {
+            return $genre['name'];
+        }
+    }
+
+    return null;
 }
 ?>
