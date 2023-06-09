@@ -1,0 +1,63 @@
+body{
+    margin:0px;
+    background-color: #242424;
+    color:white;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    display:grid;
+    gap:20px;
+    grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+    grid-auto-rows: auto;
+    margin-top:20px;
+    padding:20px;
+}
+ img{
+    width:100%;
+    
+}
+.movie-card{
+    background-color: aliceblue;
+    color: black;
+    margin:20px;
+    border-radius: 20px;
+    height:fit-content;
+}
+
+.movie-img{
+    max-height: 600px;
+}
+h1{
+    margin:0px;
+    text-align:center;
+    
+}
+.movie-ratings{
+    padding:10px;
+    margin:0px;
+}
+.movie-ratings p {
+    word-wrap: break-word;
+    overflow: hidden;
+    margin:0px;
+}
+.movie-card button {
+    padding: 10px 20px;
+    margin: 10px 0px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ff7a00;
+    color: #fff;
+}
+.div-button{
+    width:100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.movie-card:hover{
+    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
