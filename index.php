@@ -17,7 +17,7 @@ $user_json = json_encode($user);
 	<div id="nav-links">
 		<a href="pages/home.php">Home</a>
 		<a href="pages/movies.php">Movies</a>
-		<a href="">TV Shows</a>
+		<a href="pages/tvshow.html">TV Shows</a> 
 		<a href="pages/games.php">Games</a>
 		<a href="pages/about.html">About us</a>
 	</div>
