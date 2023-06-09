@@ -95,7 +95,7 @@ include "navbar.php"
             }
 
             echo '<div class="movie-card">';
-            echo '  <a href=""><img src="' . $poster_path . '" alt="Movie Poster"></a>';
+            echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
             echo '  <div class="movie-info">';
             echo '    <h1>' . $title . '</h1>';
             echo '  </div>';
