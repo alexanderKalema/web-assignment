@@ -26,6 +26,7 @@
 
         echo '<div class="container">';
         foreach($data['results'] as $game){
+            $id=$game['id'];
             $name=$game['name'];
             $background_image=$game['background_image'];
             $release_date = $game['released'];
@@ -37,7 +38,7 @@
             }
 
             echo '<div class="movie-card">';
-            echo '<a href=""><img src="'. $background_image. '"alt="game poster"></a>';
+            echo '<a href="game_details.php?game_id=' . $id . '"><img src="'. $background_image. '"alt="game poster"></a>';
             echo '<div class="game-info">';
             echo '<h1>' .$name. '</h1>';
             echo '</div>';
@@ -47,7 +48,7 @@
             echo '<p>Rating: ' .  $rating . '</p>';
             echo '</div>';
             echo '<div class="div-button">';
-            echo '<button class="button">Read More &gt;</button>';
+            echo '<a href="game_details.php?game_id=' . $id . '"><button class="button">Read More &gt;</button></a>';
             echo '</div>';
             echo '</div>';
         }
