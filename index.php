@@ -59,10 +59,11 @@ $user_json = json_encode($user);
 		<div class="letter">E</div>
 		<div class="letter">F</div>
 	</div>
-	<div class="search-div">
-		<input type="text" placeholder="Search anything.." class="search">
+	<form class="search-div" id ="searchForm">
+		<input type="text" placeholder="Search anything.." id="searchInput" class="search">
 		<a href=""><img src="assets/intro-icon.png" class="search-icon" width="40px" height="40px"></a>
-	</div>
+	</form>
+	<div id="results"></div>
 	<p class="share-us">Share Us On</p>
 	<div class="shares">
 		<button class="twitter">
@@ -142,7 +143,81 @@ $user_json = json_encode($user);
 	<p class="end">&copy; 2023 MovieChief. All rights reserved.</p>
 </footer>
 
+<script>
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    handleSearch(e.target.value);
+});
+const maxResultsPerCategory = 3;
 
+function handleSearch(query) {
+    if (query.length > 0) {
+        clearResults();
+        searchMovies(query);
+        searchTVShows(query);
+        searchGames(query);
+    } else {
+        clearResults();
+    }
+}
+
+function clearResults() {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = '';
+}
+
+function searchMovies(query) {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=04a11c37bed080ebfdae72a810bd376e&query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const results = data.results.slice(0, maxResultsPerCategory);
+            addResultsToPage('Movies', results);
+        });
+}
+
+function searchTVShows(query) {
+    fetch(`https://api.themoviedb.org/3/search/tv?api_key=04a11c37bed080ebfdae72a810bd376e&query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const results = data.results.slice(0, maxResultsPerCategory);
+            addResultsToPage('TV Shows', results);
+        });
+}
+
+function searchGames(query) {
+    fetch(`https://api.rawg.io/api/games?key=c8750653a2754ea49bb6b6ff57ff592a&search=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const results = data.results.slice(0, maxResultsPerCategory);
+            addResultsToPage('Games', results);
+        });
+}
+
+function addResultsToPage(category, results) {
+    const resultsContainer = document.getElementById('results');
+    const categoryContainer = document.createElement('div');
+    categoryContainer.className = 'category-container';
+    categoryContainer.innerHTML = `<a id = "title-a"><h2 style="color:white; font-size: 30px" >${category}</h2></a>`;
+    
+    if (results.length === 0) {
+        categoryContainer.innerHTML += '<p style="color:white">No results found.</p>';
+    } else {
+        results.forEach(result => {
+            categoryContainer.innerHTML += `<a id="results-a"><p style="color:white" >${result.name || result.title}</p></a>`;
+        });
+    }
+    
+    resultsContainer.appendChild(categoryContainer);
+
+    categoryContainer.style.display = 'inline-block';
+    categoryContainer.style.verticalAlign = 'top';
+    categoryContainer.style.marginRight = '20px';
+	categoryContainer.style.cursor = "default";
+
+
+}
+  
+  
+</script>
 <script>
 
         let user = <?php echo $user_json; ?>;
