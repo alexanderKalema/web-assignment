@@ -170,6 +170,9 @@ function searchMovies(query) {
         .then(response => response.json())
         .then(data => {
             const results = data.results.slice(0, maxResultsPerCategory);
+			results.forEach(result => {
+                result.category = 'Movies';
+            });
             addResultsToPage('Movies', results);
         });
 }
@@ -179,6 +182,9 @@ function searchTVShows(query) {
         .then(response => response.json())
         .then(data => {
             const results = data.results.slice(0, maxResultsPerCategory);
+			results.forEach(result => {
+                result.category = 'Tv Show';
+            });
             addResultsToPage('TV Shows', results);
         });
 }
@@ -188,30 +194,50 @@ function searchGames(query) {
         .then(response => response.json())
         .then(data => {
             const results = data.results.slice(0, maxResultsPerCategory);
+            results.forEach(result => {
+                result.category = 'Games';
+            });
             addResultsToPage('Games', results);
         });
 }
+
 
 function addResultsToPage(category, results) {
     const resultsContainer = document.getElementById('results');
     const categoryContainer = document.createElement('div');
     categoryContainer.className = 'category-container';
-    categoryContainer.innerHTML = `<a id = "title-a"><h2 style="color:white; font-size: 30px" >${category}</h2></a>`;
+    categoryContainer.innerHTML = `<a id="title-a"><h2 style="color:white; font-size: 38px">${category}</h2></a>`;
     
     if (results.length === 0) {
         categoryContainer.innerHTML += '<p style="color:white">No results found.</p>';
     } else {
         results.forEach(result => {
-            categoryContainer.innerHTML += `<a id="results-a"><p style="color:white" >${result.name || result.title}</p></a>`;
-        });
-    }
+			let link;
+        if (result.category === 'Movies') {
+            link = `./pages/review1.php?movie=${result.name || result.title}`;
+        } else if (result.category === 'Games') {
+            link = `./pages/game_details.php?game_id=${result.id}`; 
+        }
+        categoryContainer.innerHTML += `<a class="result-link" href="${link}"><p class="result-text" style="color:white; font-size: 17px">${result.name || result.title}</p></a>`;
+    });
+        };
     
     resultsContainer.appendChild(categoryContainer);
 
     categoryContainer.style.display = 'inline-block';
     categoryContainer.style.verticalAlign = 'top';
-    categoryContainer.style.marginRight = '20px';
+    categoryContainer.style.marginRight = '50px';
 	categoryContainer.style.cursor = "default";
+
+	document.querySelectorAll('.result-text').forEach(text => {
+  text.addEventListener('mouseover', () => {
+    text.style.color = 'red';
+  });
+  
+  text.addEventListener('mouseout', () => {
+    text.style.color = 'white';
+  });
+});
 
 
 }

@@ -74,9 +74,7 @@ nav img {
     margin-right: 25px;
 }
 
-.avatar {
 
-}
 .menu-icon span {
 
     display: block;
@@ -460,6 +458,12 @@ body {
     color: white;
     font-size: 1.2rem;
 }
+.mandalorian span:last-child {
+    width: 400px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+  }
 
 .mandalorian a span:hover {
     color: lightskyblue;
@@ -472,6 +476,7 @@ body {
 .mandalorian span svg {
     transform: translateY(3px);
 }
+
 
 hr {
     opacity: 0.3;
