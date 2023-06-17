@@ -505,8 +505,8 @@ hr {
 
 .game-gallery {
     display: flex;
-    height: 20rem;
-    gap: 1rem;
+    height: 16rem;
+    gap: 15px;
 }
 
 .game-gallery > div {
@@ -561,7 +561,7 @@ hr {
 }
 
 .game-description {
-    font-size: 13px;
+    font-size: 17px;
 }
 
 
