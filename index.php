@@ -20,6 +20,7 @@ $user_json = json_encode($user);
 		<a href="pages/tvshow.html">TV Shows</a> 
 		<a href="pages/games.php">Games</a>
 		<a href="pages/about.html">About us</a>
+        <a href="pages/news.html">News</a>
 	</div>
 	<div id="signup" >
 		<a href="pages/login.html"> Signup / Login</a>

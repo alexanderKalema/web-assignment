@@ -228,26 +228,6 @@ nav {
     height: 30px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body {
     box-sizing: border-box;
     background-color: #242424;
@@ -451,9 +431,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 .mandalorian a {
-    margin-right: 250px;
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
@@ -642,3 +620,4 @@ hr {
 .wrapper {
     overflow-x: auto;
 }
+

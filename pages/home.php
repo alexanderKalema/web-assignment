@@ -6,6 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Home Page</title>
+    <style>
+footer{
+    margin-top: 70px;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    background-color: #404040;
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.about-us{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    padding-left: 250px;
+    margin: 0 auto;
+}
+.about-us-top h2{
+    color: white;
+    margin-bottom: 20px;
+    transform: translateX(-5px);
+}
+.foot-links{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.foot-links a{
+    color: white;
+    text-decoration: none;
+}
+.foot-links a:hover{
+    color: red;
+}
+.foot-copy{
+    color: white;
+}
+.complaint{
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    margin-left: auto;
+    padding-right: 30px;
+}
+.complaint p{
+    color: white;
+    margin-bottom: 10px;
+}
+    </style>
 </head>
 <body>
 
@@ -124,106 +178,106 @@ include "navbar.php"
         <div class="popular-top">
             <h1 class="popular-title">MOST POPULAR SHOWS ON MC</h1>
         </div>
-        <div class="popular-main">
+        <div class="popular-main"  style="padding-left: 240px;">
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 11.5px;">The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Mandalorian</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Walking Dead</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Walking Dead</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 108px;">Naruto</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Naruto</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 8.5px;">Game of Thrones</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Game of Thrones</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 47px;">Breaking Bad</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Breaking Bad</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 92.5px;">The Wire</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Wire</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 78px;">Tulsa King</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Tulsa King</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 30px;">Better Call Saul</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Better Call Saul</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 132.5px;">Halo</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Halo</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span style="margin-right: 92px;">Mr Robot</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Mr Robot</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr style="width: 500px;">
+                <hr style="width: 600px; transform:translateX(-140px)">
             </div>
         </div>
         <div class="popular-end">
@@ -245,6 +299,27 @@ include "navbar.php"
         <p class="game-description">God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment. It was released for the PlayStation 4 in April 2018, with a Windows port in January 2022.</p>
     </div>
 </main>
+<footer>
+    <div class="foot">
+        <div class="about-us">
+            <div class="about-us-top">
+                <h2>About Us</h2>
+            </div>
+            <div class="foot-links">
+                <a href="./privacy.html">Privacy Policy</a>
+                <a href="./contact.html">Contact Us</a>
+                <a href="./terms.html">Terms of Service</a>
+            </div>
+            <div class="foot-copy">
+                <p>&copy; 2023 MovieChief. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="complaint">
+            <p>Any Complaints? Let us know!</p>
+            <textarea cols="10" rows="2"></textarea>
+        </div>
+    </div>
+</footer>
 <script>
 
     let user = <?php echo $user_json; ?>;
