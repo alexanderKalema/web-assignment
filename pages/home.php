@@ -293,8 +293,8 @@ include "navbar.php"
         <p class="game-description">Elden Ring is a 2022 action role-playing game developed by FromSoftware. It was directed by Hidetaka Miyazaki with worldbuilding provided by fantasy writer George R. R. Martin.</p>
         <div onclick="window.location.href='game_details.php?game_id=3498'" class="game-item" style="background-image: url('../assets/gta5.jpg');"></div>
         <p class="game-description">Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the seventh main entry in the Grand Theft Auto series, following 2008's Grand Theft Auto IV, and the fifteenth instalment overall. </p>
-        <div class="game-item" style="background-image: url('../assets/rdr2.jpg');"></div>
-        <p onclick="window.location.href='game_details.php?game_id=28'" class="game-description">Red Dead Redemption 2 is a 2018 action-adventure game developed and published by Rockstar Games. The game is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption. </p>
+        <div onclick="window.location.href='game_details.php?game_id=28'" class="game-item" style="background-image: url('../assets/rdr2.jpg');"></div>
+        <p class="game-description">Red Dead Redemption 2 is a 2018 action-adventure game developed and published by Rockstar Games. The game is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption. </p>
         <div onclick="window.location.href='game_details.php?game_id=58175'" class="game-item" style="background-image: url('../assets/gow4.jpg');"></div>
         <p class="game-description">God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment. It was released for the PlayStation 4 in April 2018, with a Windows port in January 2022.</p>
     </div>
