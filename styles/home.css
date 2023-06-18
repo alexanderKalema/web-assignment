@@ -74,9 +74,7 @@ nav img {
     margin-right: 25px;
 }
 
-.avatar {
 
-}
 .menu-icon span {
 
     display: block;
@@ -230,26 +228,6 @@ nav {
     height: 30px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body {
     box-sizing: border-box;
     background-color: #242424;
@@ -453,13 +431,17 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 .mandalorian a {
-    margin-right: 250px;
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
 }
+.mandalorian span:last-child {
+    width: 400px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+  }
 
 .mandalorian a span:hover {
     color: lightskyblue;
@@ -472,6 +454,7 @@ body {
 .mandalorian span svg {
     transform: translateY(3px);
 }
+
 
 hr {
     opacity: 0.3;
@@ -500,8 +483,8 @@ hr {
 
 .game-gallery {
     display: flex;
-    height: 20rem;
-    gap: 1rem;
+    height: 16rem;
+    gap: 15px;
 }
 
 .game-gallery > div {
@@ -556,7 +539,7 @@ hr {
 }
 
 .game-description {
-    font-size: 13px;
+    font-size: 17px;
 }
 
 
@@ -637,3 +620,4 @@ hr {
 .wrapper {
     overflow-x: auto;
 }
+

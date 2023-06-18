@@ -6,6 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Home Page</title>
+    <style>
+footer{
+    margin-top: 70px;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    background-color: #404040;
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.about-us{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    padding-left: 250px;
+    margin: 0 auto;
+}
+.about-us-top h2{
+    color: white;
+    margin-bottom: 20px;
+    transform: translateX(-5px);
+}
+.foot-links{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.foot-links a{
+    color: white;
+    text-decoration: none;
+}
+.foot-links a:hover{
+    color: red;
+}
+.foot-copy{
+    color: white;
+}
+.complaint{
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    margin-left: auto;
+    padding-right: 30px;
+}
+.complaint p{
+    color: white;
+    margin-bottom: 10px;
+}
+    </style>
 </head>
 <body>
 
@@ -127,147 +181,148 @@ $user_json = json_encode($user);
         <div class="popular-top">
             <h1 class="popular-title">MOST POPULAR SHOWS ON MC</h1>
         </div>
-        <div class="popular-main">
+        <div class="popular-main"  style="padding-left: 240px;">
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Mandalorian</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Walking Dead</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Naruto</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Game of Thrones</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Breaking Bad</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">The Wire</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Tulsa King</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Better Call Saul</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Halo</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)"">
             </div>
             <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
+                <a href=""><span style="transform: translateX(-140px); text-align:left">Mr Robot</span></a>
                 <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                            fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                                 fill="#f3da35"></path>
                     </svg> &nbsp; 0.0
                     </span>
-                <hr>
-            </div>
-            <div class="mandalorian">
-                <a href=""><span>The Mandalorian</span></a>
-                <span><svg style="color: #f3da35" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                           fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"> <path
-                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                                fill="#f3da35"></path>
-                    </svg> &nbsp; 0.0
-                    </span>
-                <hr>
+                <hr style="width: 600px; transform:translateX(-140px)">
             </div>
         </div>
         <div class="popular-end">
-            <a href="">VIEW MORE</a>
+            <a href="./tvshow.html">VIEW MORE</a>
         </div>
 
     </div>
     <h1 class="hottest">MOVIECHEIF'S TOP GAME PICKS</h1>
     <div class="game-gallery">
-        <div class="game-item" style="background-image: url('../assets/gotg3.jpeg');"></div>
-        <p class="game-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi asperiores omnis
-            pariatur possimus saepe sapiente ipsam aspernatur. Earum, numquam, dolores ut distinctio aut pariatur,
-            eligendi quas blanditiis perspiciatis ratione ipsum.</p>
-        <div class="game-item" style="background-image: url('../assets/gotg3.jpeg');"></div>
-        <p class="game-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi asperiores omnis
-            pariatur possimus saepe sapiente ipsam aspernatur. Earum, numquam, dolores ut distinctio aut pariatur,
-            eligendi quas blanditiis perspiciatis ratione ipsum.</p>
-        <div class="game-item" style="background-image: url('../assets/gotg3.jpeg');"></div>
-        <p class="game-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi asperiores omnis
-            pariatur possimus saepe sapiente ipsam aspernatur. Earum, numquam, dolores ut distinctio aut pariatur,
-            eligendi quas blanditiis perspiciatis ratione ipsum.</p>
-        <div class="game-item" style="background-image: url('../assets/gotg3.jpeg');"></div>
-        <p class="game-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi asperiores omnis
-            pariatur possimus saepe sapiente ipsam aspernatur. Earum, numquam, dolores ut distinctio aut pariatur,
-            eligendi quas blanditiis perspiciatis ratione ipsum.</p>
-        <div class="game-item" style="background-image: url('../assets/gotg3.jpeg');"></div>
-        <p class="game-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi asperiores omnis
-            pariatur possimus saepe sapiente ipsam aspernatur. Earum, numquam, dolores ut distinctio aut pariatur,
-            eligendi quas blanditiis perspiciatis ratione ipsum.</p>
+        <div onclick="window.location.href='game_details.php?game_id=4200'" class="game-item" style="background-image: url('../assets/portal.jpg');"></div>
+        <p class="game-description">Portal 2 is a 2011 puzzle-platform video game developed by Valve for Windows, Mac OS X, Linux, PlayStation 3, and Xbox 360. The digital PC version is distributed online by Valve's Steam service, while all retail editions were distributed by Electronic Arts.</p>
+        <div onclick="window.location.href='game_details.php?game_id=326243'" class="game-item" style="background-image: url('../assets/elden.jpg');"></div>
+        <p class="game-description">Elden Ring is a 2022 action role-playing game developed by FromSoftware. It was directed by Hidetaka Miyazaki with worldbuilding provided by fantasy writer George R. R. Martin.</p>
+        <div onclick="window.location.href='game_details.php?game_id=3498'" class="game-item" style="background-image: url('../assets/gta5.jpg');"></div>
+        <p class="game-description">Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the seventh main entry in the Grand Theft Auto series, following 2008's Grand Theft Auto IV, and the fifteenth instalment overall. </p>
+        <div onclick="window.location.href='game_details.php?game_id=28'" class="game-item" style="background-image: url('../assets/rdr2.jpg');"></div>
+        <p class="game-description">Red Dead Redemption 2 is a 2018 action-adventure game developed and published by Rockstar Games. The game is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption. </p>
+        <div onclick="window.location.href='game_details.php?game_id=58175'" class="game-item" style="background-image: url('../assets/gow4.jpg');"></div>
+        <p class="game-description">God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment. It was released for the PlayStation 4 in April 2018, with a Windows port in January 2022.</p>
     </div>
 </main>
+<footer>
+    <div class="foot">
+        <div class="about-us">
+            <div class="about-us-top">
+                <h2>About Us</h2>
+            </div>
+            <div class="foot-links">
+                <a href="./privacy.html">Privacy Policy</a>
+                <a href="./contact.html">Contact Us</a>
+                <a href="./terms.html">Terms of Service</a>
+            </div>
+            <div class="foot-copy">
+                <p>&copy; 2023 MovieChief. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="complaint">
+            <p>Any Complaints? Let us know!</p>
+            <textarea cols="10" rows="2"></textarea>
+        </div>
+    </div>
+</footer>
 <script>
 
     const slider = document.querySelector(".slider");

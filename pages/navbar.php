@@ -26,8 +26,12 @@ else{
         <img src='../services/server/".$user->path ."' alt='Profile'  style='
     width:60px;
     height: 60px;
+    margin-right: 50px;
     border-radius: 50%;
     background-size: cover;
+    background-image: url(".
+
+    '../services/server/'.$user->path .");
 
 '>
 </div>
