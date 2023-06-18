@@ -39,14 +39,14 @@ class Database
         $this->pdo->exec($sql);
 
         $statement = $this->pdo->prepare("INSERT INTO users (email, password, username, dob , gender ,bio , profile_path )
-                VALUES (:email, :password, :username, :dob, :gender, :bio, :path)");
+                VALUES (:email, :password, :username, :dob, :gender, :bio, :profile_path)");
         $statement->bindValue(':email', $user->email);
         $statement->bindValue(':password', $user->password);
         $statement->bindValue(':username', $user->username);
         $statement->bindValue(':dob', $user->dob);
         $statement->bindValue(':gender', $user->gender);
         $statement->bindValue(':bio', $user->bio);
-        $statement->bindValue(':path', $user->path);
+        $statement->bindValue(':profile_path', $user->path);
 
 
 

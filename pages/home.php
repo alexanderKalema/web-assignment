@@ -13,10 +13,9 @@
 session_start();
 $user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
 $user_json = json_encode($user);
-include "navbar.php"
+  include "navbar.php"
 ?>
 <main>
-
     <div class="slider">
         <div class="slide active">
             <img src="../assets/game (48).jpg" alt="">
@@ -68,6 +67,8 @@ include "navbar.php"
     <?php
 
     require_once '../services/apis/movie_api.php';
+    require_once '../services/models/movie.php';
+
 
     $categories = ['popular', 'top_rated', 'upcoming'];
 
@@ -84,10 +85,12 @@ include "navbar.php"
 
         echo "<div class='wrapper'>";
         echo "<div class='cards'>";
+
         foreach ($data['results'] as $movie) {
+
             $title = $movie['title'];
-            $poster_path = "https://image.tmdb.org/t/p/w500" . $movie['poster_path'];
-            $release_date = $movie['release_date'];
+            $poster_path = "https://image.tmdb.org/t/p/w500" .  $movie['poster_path'];
+            $release_date =   $movie['release_date'];
             $popularity = $movie['popularity'];
             $genres = 'Genres:  ';
             foreach ($movie['genre_names'] as $name) {
@@ -95,7 +98,7 @@ include "navbar.php"
             }
 
             echo '<div class="movie-card">';
-            echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
+            echo '<a href="review1.php?movie='.$movie['id'] .'"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
             echo '  <div class="movie-info">';
             echo '    <h1>' . $title . '</h1>';
             echo '  </div>';
@@ -105,7 +108,7 @@ include "navbar.php"
             echo '    <p>Popularity: ' . $popularity . '</p>';
             echo '  </div>';
 
-            echo '  <button>Read More &gt;</button>';
+            echo ' <a href="review1.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
             echo '</div>';
         }
 
@@ -266,18 +269,6 @@ include "navbar.php"
     </div>
 </main>
 <script>
-
-    let user = <?php echo $user_json; ?>;
-
-    if (user) {
-        document.getElementById("signup").style.display = "none";
-        document.getElementById("profile").style.display = "block";
-    }
-    else {
-        document.getElementById("profile").remove();
-    }
-
-
 
     const slider = document.querySelector(".slider");
     const nextBtn = document.querySelector(".next-btn");

@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'dob' => $_POST['dob'],
             'gender' => $_POST['gender'],
             'bio' => $_POST['bio'],
-            'path' => $imagePath
+            'profile_path' => $imagePath
         ];
 
         $user = new User();

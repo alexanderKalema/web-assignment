@@ -2,7 +2,7 @@
 
 class User
 {
-    public int $id;
+    public ?int $id;
     public string $email;
     public string $password;
     public string $username;
@@ -14,7 +14,7 @@ class User
     public function load($data)
     {
 
-        $this->id = $data['id'];
+        $this->id = $data['id'] ?? null;
         $this->email = $data['email'];
         $this->password = $data['password'];
         $this->username = $data['username'];

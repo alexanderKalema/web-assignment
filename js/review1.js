@@ -27,7 +27,7 @@ watchlistBtn.addEventListener('click', () => {
     if(watchclick==false){
         check.classList.remove('fa-plus');
     check.classList.add('fa-check');
-        showMessage('aded to watchlist');
+        showMessage('added to watchlist');
     watchclick=true;
      }
      else{

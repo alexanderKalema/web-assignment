@@ -23,7 +23,6 @@ if (isset($movieName)) {
         // Extract movie details
         $title = $movie['title'];
         $overview = $movie['overview'];
-        $genreIds = $movie['genre_ids'];
         $posterPath = $movie['poster_path'];
         $backdropPath = $movie['backdrop_path'];
         $releaseDate = $movie['release_date'];
