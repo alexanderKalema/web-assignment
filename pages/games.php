@@ -11,6 +11,21 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="../assets/intro-logo.png" alt="logo" >
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="movies.php">Movies</a></li>
+                <li><a href="tvshow.html">Tv shows</a></li>
+                <li><a href="games.php">Games</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="news.html">News</a></li>
+            </ul>
+        </div>
+    </div>
     <?php
 
     require_once '../services/apis/game_api.php';

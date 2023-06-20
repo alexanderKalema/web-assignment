@@ -73,7 +73,7 @@ include "navbar.php"
 
     <div class="slider">
         <div class="slide active">
-            <img src="../assets/game (48).jpg" alt="">
+            <img src="../assets/aquman.jpg" alt="poster">
             <div class="info">
                 <h2>News 1</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -81,7 +81,7 @@ include "navbar.php"
             </div>
         </div>
         <div class="slide">
-            <img src="../assets/game (138).jpg" alt="">
+            <img src="../assets/harley.jpg" alt="poster">
             <div class="info">
                 <h2>News 2</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -90,7 +90,7 @@ include "navbar.php"
         </div>
 
         <div class="slide">
-            <img src="../assets/game (8).jpg" alt="">
+            <img src="../assets/keanu.jpg" alt="poster">
             <div class="info">
                 <h2>News 3</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -98,7 +98,7 @@ include "navbar.php"
             </div>
         </div>
         <div class="slide">
-            <img src="../assets/demon_slayer.jpg" alt="">
+            <img src="../assets/transs.jpg" alt="">
             <div class="info">
                 <h2>News 4</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
