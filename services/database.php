@@ -48,9 +48,13 @@ class Database
         $statement->bindValue(':bio', $user->bio);
         $statement->bindValue(':profile_path', $user->path);
 
+        $result = $statement->execute();
+        if ($result) {
+            return $this->getUserByEmailAndPassword($user->email, $user->password);
 
-
-        $statement->execute();
+        } else {
+            return null;
+        }
     }
 
     public function getUserByEmailAndPassword(string $email, string $password): ?User
@@ -70,18 +74,22 @@ class Database
         return null;
     }
 
-    public function addWatchList(int $userId, int$movieId){
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( user_id INT(20) ,movie_id INT(20) )");
+    public function addWatchList($userId, $movieId): bool
+    {
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( user_id VARCHAR(20) ,movie_id VARCHAR(20), saved_date DATE )");
 
-        $statement = $this->pdo->prepare("INSERT INTO watchlist (user_id, movie_id) VALUES (:userid , :movieid)");
-        $statement->bindValue(':userid', $userId);
-        $statement->bindValue(':movieid', $movieId);
-        $statement->execute();
+        $statement = $this->pdo->prepare("INSERT INTO watchlist (user_id, movie_id, saved_date) VALUES ( 'fsddsf', 'gff', NOW())");
+//        $statement->bindValue(':userid', $userId);
+//        $statement->bindValue(':movieid', $movieId);
+
+
+
+        return $statement->execute();
     }
 
     public function loadWatchList(int $userId): array
     {
-        $statement = $this->pdo->prepare("SELECT movie_id FROM watchlist WHERE user_id = :id");
+        $statement = $this->pdo->prepare("SELECT movie_id, saved_date  FROM watchlist WHERE user_id = :id");
         $statement->bindValue(':id', $userId);
         $statement->execute();
 
@@ -91,12 +99,16 @@ class Database
         $movieIds = array();
 
         foreach ($movie_data as $row) {
-            $movieIds[] = $row['movie_id'];
+            array_push($movieIds, array($row['movie_id'], $row['saved_date']));
         }
-
-
         return $movieIds;
     }
 
+    public function deleteWatchList(int $movieId): bool
+    {
+        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_id = :id");
+        $statement->bindValue(':id', $movieId);
+      return $statement->execute();
 
+    }
 }

@@ -152,7 +152,7 @@ $user_json = json_encode($user);
             }
 
             echo '<div class="movie-card">';
-            echo '<a href="review1.php?movie='.$movie['id'] .'"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
+            echo '<a href="movie_detail.php?movie='.$movie['id'] .'"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
             echo '  <div class="movie-info">';
             echo '    <h1>' . $title . '</h1>';
             echo '  </div>';
@@ -162,7 +162,7 @@ $user_json = json_encode($user);
             echo '    <p>Popularity: ' . $popularity . '</p>';
             echo '  </div>';
 
-            echo ' <a href="review1.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
+            echo ' <a href="movie_detail.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
             echo '</div>';
         }
 

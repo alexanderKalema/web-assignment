@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" href="../styles/review1.css">
+    <link rel="stylesheet" href="../styles/movie_detail.css">
 
 
     <title>Review page</title>
@@ -16,21 +16,24 @@
 
 <?php
 require_once "../services/models/movie.php";
+require_once "../services/database.php";
 
+session_start();
+$user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
+$user_json = json_encode($user);
+$db = new Database();
 $movie = new movie($_GET['movie']);
 ?>
 <div id="background-container"></div>
 <div class="favorite-btn" id="favoriteBtn" onclick="handleLikeClick(this)">
     <i class="fas fa-heart"></i>
 </div>
-<form action="watchlist.php" method="post">
     <div class="bookmark-movie" id="bookmark-movie">
         <div class="watchlist-btn" id="watchlistBtn">
             <i class="icon fa fa-bookmark"></i>
             <i class="check fa fa-plus"></i>
         </div>
     </div>
-</form>
 <div class="message-box" id="messageBox"></div>
 <div class="movie-info">
     <div class="left-section">
@@ -137,7 +140,7 @@ $movie = new movie($_GET['movie']);
                     break;
                 }
 
-                echo '<a href="review1.php?movie=' . $id . '">';
+                echo '<a href="movie_detail.php?movie=' . $id . '">';
                 echo '<div> <img src="https://image.tmdb.org/t/p/original/' . $posterPath . '" alt="' . $id . '"></div>';
 
                 echo '</a>';
@@ -188,51 +191,130 @@ $movie = new movie($_GET['movie']);
 </div>
 
 <script>
-    const favoriteBtn = document.getElementById('favoriteBtn');
-    const watchlistBtn = document.getElementById('watchlistBtn');
-    const messageBox = document.getElementById('messageBox');
-    let favclick = false;
-    let watchclick = false;
+    var imagePaths = <?php echo json_encode($movie->detail->imagePath); ?>;
+    var imageIndex = 0;
+    var imageCount = imagePaths.length;
 
-    function handleLikeClick(button) {
-        button.classList.toggle("clicked");
+    function changeBackgroundImage() {
+        console.log("hj");
+        var imageUrl = "https://image.tmdb.org/t/p/original" + imagePaths[imageIndex];
+        var backgroundContainer = document.getElementById('background-container');
 
+        // Preload the new image
+        var tempImage = new Image();
+        tempImage.src = imageUrl;
+        tempImage.onload = function () {
+            // Create a clone of the background container
+            var clonedContainer = backgroundContainer.cloneNode(true);
+            clonedContainer.style.backgroundImage = "url('" + imageUrl + "')";
+
+            // Set initial opacity and contrast for animation
+            clonedContainer.style.opacity = 0;
+            clonedContainer.style.filter = "brightness(30%)";
+            clonedContainer.style.transition = "opacity 2s ease, filter 2s ease";
+
+            // Append the cloned container to the body
+            document.body.appendChild(clonedContainer);
+
+            // Trigger reflow to ensure the cloned container is rendered
+            clonedContainer.offsetHeight;
+
+            // Fade out the original container
+            backgroundContainer.style.opacity = 0.1;
+            backgroundContainer.style.transition = "opacity 2s ease";
+
+            // Fade in the cloned container
+            setTimeout(function () {
+                clonedContainer.style.opacity = 0.9;
+                clonedContainer.style.filter = "brightness(60%)";
+            }, 10);
+
+            // Remove the original container after the transition ends
+            setTimeout(function () {
+                document.body.removeChild(backgroundContainer);
+            }, 4000);
+        };
+
+        // Update the image index for the next change
+        imageIndex = (imageIndex + 1) % imageCount;
     }
 
-    function handleDislikeClick(button) {
-        button.classList.toggle("clicked");
+    // Change the background image initially
+    changeBackgroundImage();
+
+    // Change the background image every 5 seconds
+    setInterval(changeBackgroundImage, 7000);
+
+        let user = <?php   echo $user_json; ?>;
+
+
+        const watchlistBtn = document.getElementById('watchlistBtn');
+        const messageBox = document.getElementById('messageBox');
+
+        let watchclick = false;
+
+
+
+
+        window.onload = () =>{
+            watchlistBtn.addEventListener('click', () => {
+                console.log("no even here");
+                if(user !== null){
+
+                    const check = document.querySelector('.check');
+                    if (watchclick === false) {
+                        let result =  watchlistOperation("add");
+                        if(result){
+                            check.classList.remove('fa-plus');
+                            check.classList.add('fa-check');
+                            showMessage('Added to watchlist');
+                            watchclick = true;
+                        }
+                        else{
+                            showMessage("Couldn't add to watchlist");
+                        }
+
+
+                    } else {
+                        let result = watchlistOperation("remove");
+                        if(result){
+                            check.classList.remove('fa-check');
+                            check.classList.add('fa-plus');
+                            showMessage('Removed from watchlist');
+                            watchclick = false;
+                        }
+                        else{
+                            showMessage("Couldn't remove from watchlist");
+                        }
+
+                    }
+                } else{
+                    alert("You need to be logged in to access watchlist");
+                }
+
+            });
+
+        };
+
+
+
+    async function watchlistOperation( operation) {
+        try {
+            let res =false;
+            if(operation ==="add"){
+                 console.log (<?php  echo $movie->id ?>);
+                 res =  <?php  echo $db->addWatchList($user->id,$movie->id);?>;
+            }
+            else{
+                 res =   <?php echo $db->deleteWatchList($movie->id);?>;
+            }
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    favoriteBtn.addEventListener('click', () => {
-        if (favclick == false) {
-            showMessage('added to favorites');
-            favclick = true;
-        } else {
-            showMessage('Removed from favorites');
-            favclick = false;
 
-        }
-    });
-
-    watchlistBtn.addEventListener('click', () => {
-        const check = document.querySelector('.check');
-        if (watchclick == false) {
-            check.classList.remove('fa-plus');
-            check.classList.add('fa-check');
-            showMessage('Added to watchlist');
-            watchclick = true;
-        } else {
-
-
-            check.classList.remove('fa-check');
-            check.classList.add('fa-plus');
-            showMessage('Removed from watchlist');
-            watchclick = false;
-
-        }
-
-
-    });
 
 
     function showMessage(text) {
@@ -333,60 +415,7 @@ $movie = new movie($_GET['movie']);
 </script>
 
 
-<script>
-    var imagePaths = <?php echo json_encode($movie->detail->imagePath); ?>;
-    var imageIndex = 0;
-    var imageCount = imagePaths.length;
 
-    function changeBackgroundImage() {
-        var imageUrl = "https://image.tmdb.org/t/p/original" + imagePaths[imageIndex];
-        var backgroundContainer = document.getElementById('background-container');
-
-        // Preload the new image
-        var tempImage = new Image();
-        tempImage.src = imageUrl;
-        tempImage.onload = function () {
-            // Create a clone of the background container
-            var clonedContainer = backgroundContainer.cloneNode(true);
-            clonedContainer.style.backgroundImage = "url('" + imageUrl + "')";
-
-            // Set initial opacity and contrast for animation
-            clonedContainer.style.opacity = 0;
-            clonedContainer.style.filter = "brightness(30%)";
-            clonedContainer.style.transition = "opacity 2s ease, filter 2s ease";
-
-            // Append the cloned container to the body
-            document.body.appendChild(clonedContainer);
-
-            // Trigger reflow to ensure the cloned container is rendered
-            clonedContainer.offsetHeight;
-
-            // Fade out the original container
-            backgroundContainer.style.opacity = 0.1;
-            backgroundContainer.style.transition = "opacity 2s ease";
-
-            // Fade in the cloned container
-            setTimeout(function () {
-                clonedContainer.style.opacity = 0.9;
-                clonedContainer.style.filter = "brightness(60%)";
-            }, 10);
-
-            // Remove the original container after the transition ends
-            setTimeout(function () {
-                document.body.removeChild(backgroundContainer);
-            }, 4000);
-        };
-
-        // Update the image index for the next change
-        imageIndex = (imageIndex + 1) % imageCount;
-    }
-
-    // Change the background image initially
-    changeBackgroundImage();
-
-    // Change the background image every 5 seconds
-    setInterval(changeBackgroundImage, 7000);
-</script>
 
 
 <script>

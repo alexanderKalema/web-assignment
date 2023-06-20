@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user->load($data);
 
         $database = new Database();
-        $database->createUser($user);
+        $user = $database->createUser($user);
 
         $_SESSION['user'] = json_encode($user);
         header('Location: ../index.php');

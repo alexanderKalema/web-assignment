@@ -138,13 +138,14 @@ h1, h2, p {
 }
 
 .watch-trailer-btn i {
-    font-size: 40px;
+    font-size: 35px;
 
 }
 
 .watch-trailer-btn:hover::before {
     width: 150%;
     height: 150%;
+
     box-shadow: 0 0 10px rgba(20, 103, 192, 0.5);
 }
 
@@ -381,6 +382,7 @@ h1, h2, p {
 .underline {
     display: inline;
     position: relative;
+    font-family: Bellota, serif;
 }
 
 
@@ -516,6 +518,7 @@ h1, h2, p {
 
 .my-popup {
     position: fixed;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
