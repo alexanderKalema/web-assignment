@@ -52,3 +52,37 @@ h1{
 .tvshow-card:hover{
     box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
 }
+.nav-bar{
+    height:fit-content;
+    display:flex;
+    justify-content:space-between;
+    background-color:#1297ad;
+ }
+ li {
+     display: inline;
+     margin-right:15px;
+ }
+ .logo{
+    
+     width:fit-content;
+ }
+ .content{
+    
+     width:fit-content;
+     padding:0px;
+ }
+ .logo img{
+     width:250px;
+     height:60px;
+ }
+ li a{
+     text-decoration:none;
+     color:white;
+     font-size:20px;
+     letter-spacing: 1px;
+     font-family: Poppins, Arial;
+ }
+ li a:hover{
+     cursor:pointer;
+     color:firebrick;
+ }

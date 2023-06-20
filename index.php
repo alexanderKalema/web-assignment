@@ -76,7 +76,7 @@ $user_json = json_encode($user);
                     </svg>
                 </span>
 		</button>
-		<button class="facebook" onclick="window.location.href='https://www.facebook.com'">
+		<button class="facebook" onclick="window.location.href='https://www.facebook.com/birehanu'">
 			Facebook
 			<span>
                     <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16"

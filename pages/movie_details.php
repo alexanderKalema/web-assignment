@@ -1,5 +1,4 @@
 <?php
-// Replace YOUR_API_KEY with your actual TMDb API key
 $apiKey = '5596f947d757674db65b85089477fca7';
 
 
@@ -10,17 +9,14 @@ if (isset($movieName)) {
 
 
 
-    // Fetch movie details from TMDb API
     $apiUrl = "https://api.themoviedb.org/3/search/movie?api_key={$apiKey}&query={$encodedMovieName}";
     $response = file_get_contents($apiUrl);
     $data = json_decode($response, true);
 
     if (isset($data['results'][0])) {
-        // Get the first movie result
         $movie = $data['results'][0];
        
         
-        // Extract movie details
         $title = $movie['title'];
         $overview = $movie['overview'];
         $genreIds = $movie['genre_ids'];
@@ -28,7 +24,6 @@ if (isset($movieName)) {
         $backdropPath = $movie['backdrop_path'];
         $releaseDate = $movie['release_date'];
 
-         // Fetch movie credits
          $creditsApiUrl = "https://api.themoviedb.org/3/movie/{$movie['id']}/credits?api_key={$apiKey}";
          $creditsResponse = file_get_contents($creditsApiUrl);
          $creditsData = json_decode($creditsResponse, true);
@@ -73,13 +68,11 @@ if (isset($movieName)) {
         }
     
 
-        // Fetch movie genres
         $genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key={$apiKey}";
         $genresResponse = file_get_contents($genresApiUrl);
         $genresData = json_decode($genresResponse, true);
         $genres = $genresData['genres'];
 
-        // Map genre IDs to genre names
         $genreNames = array_map(function ($genreId) use ($genres) {
             foreach ($genres as $genre) {
                 if ($genre['id'] == $genreId) {
@@ -88,7 +81,6 @@ if (isset($movieName)) {
             }
         }, $genreIds);
 
-        // Fetch movie trailer
         $movieId = $movie['id'];
         $trailersApiUrl = "https://api.themoviedb.org/3/movie/{$movieId}/videos?api_key={$apiKey}";
         $trailersResponse = file_get_contents($trailersApiUrl);
@@ -106,7 +98,6 @@ if (isset($movieName)) {
         
         
 
-        // Fetch movie watch providers
 $watchProvidersApiUrl = "https://api.themoviedb.org/3/movie/{$movie['id']}/watch/providers?api_key={$apiKey}";
 $watchProvidersResponse = file_get_contents($watchProvidersApiUrl);
 $watchProvidersData = json_decode($watchProvidersResponse, true);
@@ -130,16 +121,13 @@ if (isset($watchProvidersData['results'])) {
 }
 
 
-        // Fetch movie images
         $imagesApiUrl = "https://api.themoviedb.org/3/movie/{$movieId}/images?api_key={$apiKey}";
         $imagesResponse = file_get_contents($imagesApiUrl);
         $imagesData = json_decode($imagesResponse, true);
         $backdrops = $imagesData['backdrops'];
 
-        // Get the first 10 images
         $backdropImages = array_slice($backdrops, 0, 10);
 
-        // Extract the file paths of the images
         $imagePaths = array_map(function ($image) {
             return $image['file_path'];
         }, $backdropImages);

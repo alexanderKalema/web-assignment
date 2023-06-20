@@ -127,7 +127,7 @@ echo "<p>{$genreString}</p>";
           
           <div class="desc-movie" id="desc-movie">
   <p id="textContainer"><?php echo $overview; ?></p>
-  <button id="seeMoreButton" style=": none;">See More</button>
+  <button id="seeMoreButton">See More</button>
 </div>
 
              
@@ -370,49 +370,39 @@ stars.forEach((star, index) => {
         var imageUrl = "https://image.tmdb.org/t/p/original" + imagePaths[imageIndex];
         var backgroundContainer = document.getElementById('background-container');
 
-        // Preload the new image
         var tempImage = new Image();
         tempImage.src = imageUrl;
         tempImage.onload = function() {
-            // Create a clone of the background container
+
             var clonedContainer = backgroundContainer.cloneNode(true);
             clonedContainer.style.backgroundImage = "url('" + imageUrl + "')";
 
-            // Set initial opacity and contrast for animation
             clonedContainer.style.opacity = 0;
             clonedContainer.style.filter = "brightness(30%)";
             clonedContainer.style.transition = "opacity 2s ease, filter 2s ease";
 
-            // Append the cloned container to the body
             document.body.appendChild(clonedContainer);
 
-            // Trigger reflow to ensure the cloned container is rendered
             clonedContainer.offsetHeight;
 
-            // Fade out the original container
             backgroundContainer.style.opacity = 0.1;
             backgroundContainer.style.transition = "opacity 2s ease";
 
-            // Fade in the cloned container
             setTimeout(function() {
                 clonedContainer.style.opacity = 0.9;
                 clonedContainer.style.filter = "brightness(60%)";
             }, 10);
 
-            // Remove the original container after the transition ends
             setTimeout(function() {
                 document.body.removeChild(backgroundContainer);
             }, 4000);
         };
 
-        // Update the image index for the next change
         imageIndex = (imageIndex + 1) % imageCount;
     }
 
-    // Change the background image initially
     changeBackgroundImage();
 
-    // Change the background image every 5 seconds
     setInterval(changeBackgroundImage, 7000);
 </script>
 
@@ -428,7 +418,6 @@ stars.forEach((star, index) => {
     }
   }
 
-  // Close the popup when clicked outside the frame
   window.onclick = function(event) {
     var popup = document.getElementById("castPopup");
     var showCastBtn = document.getElementById("showcastbtn");
@@ -449,16 +438,13 @@ const closeBtn = document.querySelector('.close-btn');
 watchTrailerBtn.addEventListener('click', () => {
   videoPlayer.style.display = 'flex';
 });
-    // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // Replace 'YOUR_TRAILER_KEY' with the actual trailer key from the PHP variable.
     var trailerKey = '<?php echo $trailerKey; ?>';
 
-    // Create an <iframe> (and YouTube player) after the API code downloads.
     var player;
     function onYouTubePlayerAPIReady() {
         player = new YT.Player('player', {
@@ -471,16 +457,12 @@ watchTrailerBtn.addEventListener('click', () => {
         });
     }
 
-    // The API will call this function when the video player is ready.
     function onPlayerReady(event) {
-        // You can add custom event listeners here, e.g., play, pause, etc.
     }
     
 document.querySelector('.close-btn').addEventListener('click', function() {
-    // Pause the video when the close button is clicked
     player.pauseVideo();
 
-    // Hide the video player container or perform any other action you want
     document.querySelector('.video-player').style.display = 'none';
 });
 
@@ -504,7 +486,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Check if the content overflows the div on page load
   var clone = textContainer.cloneNode(true);
   clone.style.cssText = 'position: absolute; visibility: hidden; height: auto; width: ' + textContainer.clientWidth + 'px;';
   document.body.appendChild(clone);
@@ -513,7 +494,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   document.body.removeChild(clone);
 
-  // Remove popup when clicked outside the frame
   window.addEventListener('click', function(event) {
     if (popup && !popup.contains(event.target) && event.target !== seeMoreButton) {
       document.body.removeChild(popup);

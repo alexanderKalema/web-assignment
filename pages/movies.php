@@ -13,7 +13,7 @@
 <body>
 <div class="nav-bar">
         <div class="logo">
-            <img src="../assets/intro-logo.png" alt="logo" >
+            <img src="../assets/intro-logo.png" alt="logo"  onclick="window.location.href='../index.php'">
         </div>
         <div class="content">
             <ul>
@@ -57,7 +57,7 @@ foreach ($categories as $category) {
         $genres_str = implode(', ', $genre_names);
 
         echo '<div class="movie-card">';
-        echo '<a href=""><img src="' . $poster_path . '" alt="movie poster"></a>';
+        echo '<a href = "review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="movie poster"></a>';
         echo '<div class="movie-info">';
         echo '<h3 class="movie-name">' . $title . '</h3>'; 
         echo '</div>';
