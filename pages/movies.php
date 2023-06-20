@@ -11,6 +11,21 @@
     <title>Movies</title>
 </head>
 <body>
+<div class="nav-bar">
+        <div class="logo">
+            <img src="../assets/intro-logo.png" alt="logo" >
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="movies.php">Movies</a></li>
+                <li><a href="tvshow.html">Tv shows</a></li>
+                <li><a href="games.php">Games</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="news.html">News</a></li>
+            </ul>
+        </div>
+    </div>
 
 <?php
 
@@ -42,17 +57,9 @@ foreach ($categories as $category) {
         $genres_str = implode(', ', $genre_names);
 
         echo '<div class="movie-card">';
-        echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="movie poster"></a>';
+        echo '<a href=""><img src="' . $poster_path . '" alt="movie poster"></a>';
         echo '<div class="movie-info">';
-        echo '<h1>' . $title . '</h1>'; 
-        echo '</div>';
-        echo '<div class="movie-ratings">';
-        echo '<p>Genre: ' . $genres_str . '</p>';
-        echo '<p>Release Date: ' . $release_date . '</p>';
-        echo '<p>Rating: ' . $rating . '</p>';
-        echo '</div>';
-        echo '<div class="div-button">';
-        echo '<button class="button">Read More &gt;</button>';
+        echo '<h3 class="movie-name">' . $title . '</h3>'; 
         echo '</div>';
         echo '</div>';
     }
