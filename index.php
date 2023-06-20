@@ -67,7 +67,7 @@ $user_json = json_encode($user);
 	<div id="results"></div>
 	<p class="share-us">Share Us On</p>
 	<div class="shares">
-		<button class="twitter">
+		<button class="twitter" onclick="window.location.href='https://www.twitter.com/1stDownstreamer'">
 			Twitter
 			<span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -76,7 +76,7 @@ $user_json = json_encode($user);
                     </svg>
                 </span>
 		</button>
-		<button class="facebook">
+		<button class="facebook" onclick="window.location.href='https://www.facebook.com'">
 			Facebook
 			<span>
                     <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -86,7 +86,7 @@ $user_json = json_encode($user);
                     </svg>
                 </span>
 		</button>
-		<button class="telegram">
+		<button class="telegram" onclick="window.location.href='https://www.t.me/bob452'">
 			Telegram
 			<span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -95,7 +95,7 @@ $user_json = json_encode($user);
                      </svg>
                 </span>
 		</button>
-		<button class="whatsapp">
+		<button class="whatsapp" onclick="window.location.href='https://www.whatsapp.com'">
 			Whatsapp
 			<span>
                     <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
