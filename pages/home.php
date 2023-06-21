@@ -328,7 +328,6 @@ function sendComplaint(): string
     const numberOfSlides = slides.length;
     var slideNumber = 0;
 
-    //image slider next button
     nextBtn.addEventListener("click", () => {
         slides.forEach((slide) => {
             slide.classList.remove("active");
@@ -347,7 +346,6 @@ function sendComplaint(): string
         slideIcons[slideNumber].classList.add("active");
     });
 
-    //image slider previous button
     prevBtn.addEventListener("click", () => {
         slides.forEach((slide) => {
             slide.classList.remove("active");
@@ -366,7 +364,6 @@ function sendComplaint(): string
         slideIcons[slideNumber].classList.add("active");
     });
 
-    //image slider autoplay
     var playSlider;
 
     var repeater = () => {
@@ -390,12 +387,10 @@ function sendComplaint(): string
     }
     repeater();
 
-    //stop the image slider autoplay on mouseover
     slider.addEventListener("mouseover", () => {
         clearInterval(playSlider);
     });
 
-    //start the image slider autoplay again on mouseout
     slider.addEventListener("mouseout", () => {
         repeater();
     });
