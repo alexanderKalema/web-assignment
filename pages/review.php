@@ -38,18 +38,38 @@ $userr->getUser($_GET['user_id']);
 <h1>Reviews for <?php echo $movie->title;?></h1>
 <div class="big-container" >
 
-        <div class="review">
-            <div class="user-image">
-                <img src="../assets/demon_slayer.jpg" alt="User Profile">
-            </div>
-            <p style="font-size: 20px; display: inline-block;"> <?php echo $user->username; ?></p>
-            <p class="review-text" id="review-text">I believe Game of Thrones was a captivating and well-produced series, but the final season left me disappointed.</p>
+    <?php
+    $ans = $db->getReviewsByMovieId($movie->id);
 
-            <div class="icons">
-                <i class="far fa-thumbs-up like"></i>
-                <i class="far fa-thumbs-down dislike"></i>
+
+    foreach ($ans as $row ){
+        $path = "../services/server/". $user->path;
+        echo "
+        
+         <div class='review'>
+            <div class='user-image'>
+                <img src=".$path ." alt='User Profile'>
+                 <p style='font-size: 20px; display: inline-block;'> ".  $user->username."</p>
+            </div>
+           
+            <p class='review-text' id='review-text'>" .$row['review_text']."</p>
+
+            <div class='icons'>
+                <i class='far fa-thumbs-up like'></i>
+                <i class='far fa-thumbs-down dislike'></i>
             </div>
         </div>
+        
+        
+        ";
+
+
+    }
+
+
+
+    ?>
+
 
 
     <div class="page-navigation">
@@ -105,6 +125,7 @@ $userr->getUser($_GET['user_id']);
 
 </script>
 <script>
+
     const likeButtons = document.querySelectorAll('.like');
     const dislikeButtons = document.querySelectorAll('.dislike');
 
@@ -139,18 +160,18 @@ $userr->getUser($_GET['user_id']);
 
 
     const submitButton = addReviewText.querySelector('.click');
-    submitButton.addEventListener('click', () => {
+    submitButton.addEventListener('click', (event) => {
+        event.preventDefault();
         var form = document.querySelector('form');
         let userr = <?php echo $user->id;?>;
         form.submit()
         let reviewText = addReviewText.querySelector('textarea').value;
-        console.log(reviewText);
+        console.log(resss);
         if(userr !== null){
             if (reviewText.trim() !== '') {
-
             <?php
                 if(isset($_POST['review'])){
-                    echo $_POST['review'];
+                  //  echo "<h1>". $_POST['review']."</h1>";
                     $db->addReview($movie->id,$user->id,$_POST['review']);
                 }
                 else{

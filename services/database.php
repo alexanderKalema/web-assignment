@@ -107,26 +107,23 @@ class Database
 
     public function loadWatchList(int $userId): array
     {
-        $statement = $this->pdo->prepare("SELECT user_id, saved_date  FROM watchlist WHERE movie_id = :id");
+        $statement = $this->pdo->prepare("SELECT movie_id, saved_date  FROM watchlist WHERE user_id = :id");
         $statement->bindValue(':id', $userId);
         $statement->execute();
 
         $movie_data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
-        // var_dump($movie_data);
-
-
         $movieIds = array();
 
         foreach ($movie_data as $row) {
-            array_push($movieIds, array($row['user_id'], $row['saved_date']));
+            array_push($movieIds, array($row['movie_id'], $row['saved_date']));
         }
         return $movieIds;
     }
 
     public function deleteWatchList( $movieId, $userId ): bool
     {
-        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_id = :userid AND user_id = :movieid");
+        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_id = :movieid AND user_id = :userid");
         $statement->bindValue(':userid', $userId);
         $statement->bindValue(':movieid',  $movieId);
 
@@ -187,6 +184,7 @@ class Database
 
 
     public function addReview($movieId,$userId, $mess){
+
         $this->pdo->exec(   "CREATE TABLE IF NOT EXISTS reviews (
   id INT NOT NULL AUTO_INCREMENT,
   movie_id INT NOT NULL,
@@ -198,15 +196,42 @@ class Database
   FOREIGN KEY (user_id) REFERENCES users(id)
 )");
 
-        $statement = $this->pdo->prepare("INSERT INTO reviews (movie_id, user_id, review_text)
-VALUES (:movieid,:userid, :mess)");
-        $statement->bindValue(':userid', $userId);
-        $statement->bindValue(':movieid', $movieId);
-        $statement->bindValue(':mess', $mess);
+        $checkStatement = $this->pdo->prepare("SELECT * FROM reviews WHERE movie_id = :movieid AND user_id = :userid AND review_text = :mess");
+        $checkStatement->execute([':movieid' => $movieId, ':userid' => $userId, ':mess' => $mess]);
 
-        return $statement->execute();
+        // Fetch the result
+        $existingRow = $checkStatement->fetch(PDO::FETCH_ASSOC);
+
+        // If no existing row is found, proceed with the insertion
+        if (!$existingRow) {
+            $insertStatement = $this->pdo->prepare("INSERT INTO reviews (movie_id, user_id, review_text) VALUES (:movieid, :userid, :mess)");
+            $insertStatement->execute([':movieid' => $movieId, ':userid' => $userId, ':mess' => $mess]);
+        }
+
 
     }
+
+    public function getReviewsByMovieId($movieId) {
+        $this->pdo->exec(   "CREATE TABLE IF NOT EXISTS reviews (
+  id INT NOT NULL AUTO_INCREMENT,
+  movie_id INT NOT NULL,
+  user_id INT NOT NULL,
+  review_text TEXT NOT NULL,
+  likes INT NOT NULL DEFAULT 0,
+  dislikes INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+)");
+
+        $statement = $this->pdo->prepare("SELECT * FROM reviews WHERE movie_id = :movieid");
+        $statement->bindValue(':movieid', $movieId);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
 
     public function likeReview(){
 
