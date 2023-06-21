@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../database.php';
 
 class User
 {
@@ -13,7 +14,17 @@ class User
 
     public function load($data)
     {
+        $this->extracted($data);
+    }
 
+    public function getUser($id){
+        $db = new Database();
+    $data = $db->getUserById($id);
+        $this->extracted($data);
+    }
+
+    public function extracted($data): void
+    {
         $this->id = $data['id'] ?? null;
         $this->email = $data['email'];
         $this->password = $data['password'];
@@ -23,5 +34,6 @@ class User
         $this->dob = $data['dob'];
         $this->gender = $data['gender'];
     }
-
 }
+
+?>

@@ -8,9 +8,28 @@
 </head>
 <body>
 <?php
+require_once "services/database.php";
 session_start();
+$db = new Database();
 $user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
 $user_json = json_encode($user);
+function sendComplaint(): string
+{
+if(!is_null($GLOBALS['user'])){
+if(isset($_POST['mess'])){
+$GLOBALS['db']->addComplaint($GLOBALS['user']->id, $_POST['mess']);
+return json_encode("success");
+}
+else{
+    return json_encode("");
+}
+
+}
+else{
+    return json_encode("Cant");
+}
+}
+
 ?>
 <nav>
 	<a href=""><img src="assets/intro-logo.png"></a>
@@ -135,17 +154,44 @@ $user_json = json_encode($user);
 
 	<div class="complaint">
 		<span>Any complaints? Let us know!</span>
-		<input type="text" class="complain">
-		<button class="complain-button">
-                    <span>
+        <form method="post" >
+		<input type="text" name="mess" class="complain" id = "complaint-input">
+		<button class="complain-button" id="complaint-button" >
                         Send
-                    </span>
 		</button>
+        </form>
 	</div>
-	<p class="end">&copy; 2023 MovieChief. All rights reserved.</p>
+	<p class="end">&copy 2023 MovieChief. All rights reserved.</p>
 </footer>
 
 <script>
+
+ document.getElementById('complaint-button').addEventListener('click', (event) => {
+
+   //  event.preventDefault();
+      let message = ""+document.getElementById("complaint-input").value;
+      if (message === ""){
+          alert("You need to add at least one character");
+      }
+      else{
+          let form = document.querySelector('form');
+          form.submit();
+          let res =  <?php echo sendComplaint();?>;
+          if (res === 'success'){
+              alert("We have received your complaint, we will work tirelessly to address your complaints as we value your opinion");
+          }
+          else if(res === 'Cant'){
+              alert("You need to login to give complaints");
+          }
+          else{
+              alert("something went wrong");
+          }
+      }
+
+
+
+
+    });
 document.getElementById('searchInput').addEventListener('input', function(e) {
     handleSearch(e.target.value);
 });

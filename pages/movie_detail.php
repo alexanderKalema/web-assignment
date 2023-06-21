@@ -20,6 +20,7 @@ require_once "../services/database.php";
 
 session_start();
 $user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
+
 $user_json = json_encode($user);
 $db = new Database();
 $movie = new movie($_GET['movie']);
@@ -28,12 +29,12 @@ $movie = new movie($_GET['movie']);
 <div class="favorite-btn" id="favoriteBtn" onclick="handleLikeClick(this)">
     <i class="fas fa-heart"></i>
 </div>
-    <div class="bookmark-movie" id="bookmark-movie">
-        <div class="watchlist-btn" id="watchlistBtn">
-            <i class="icon fa fa-bookmark"></i>
-            <i class="check fa fa-plus"></i>
-        </div>
+<div class="bookmark-movie" id="bookmark-movie">
+    <div class="watchlist-btn" id="watchlistBtn">
+        <i class="icon fa fa-bookmark"></i>
+        <i class="check fa fa-plus"></i>
     </div>
+</div>
 <div class="message-box" id="messageBox"></div>
 <div class="movie-info">
     <div class="left-section">
@@ -185,7 +186,7 @@ $movie = new movie($_GET['movie']);
 
 
     </div>
-    <a href="review2.html">
+    <a href="review.php?movie=<?php echo $movie->id?>&user_id=<?php echo $user->id?>">
         <div class="page-next">&#10095;</div>
     </a>
 </div>
@@ -245,76 +246,66 @@ $movie = new movie($_GET['movie']);
     // Change the background image every 5 seconds
     setInterval(changeBackgroundImage, 7000);
 
-        let user = <?php   echo $user_json; ?>;
+    let user = <?php   echo $user_json; ?>;
 
 
-        const watchlistBtn = document.getElementById('watchlistBtn');
-        const messageBox = document.getElementById('messageBox');
+    const watchlistBtn = document.getElementById('watchlistBtn');
+    const messageBox = document.getElementById('messageBox');
 
-        let watchclick = false;
-
-
+    let watchclick = false;
 
 
-        window.onload = () =>{
-            watchlistBtn.addEventListener('click', () => {
-                console.log("no even here");
-                if(user !== null){
+   watchlistBtn.addEventListener('click', () => {
+            console.log("no even here");
+            if (user !== null) {
 
-                    const check = document.querySelector('.check');
-                    if (watchclick === false) {
-                        let result =  watchlistOperation("add");
-                        if(result){
-                            check.classList.remove('fa-plus');
-                            check.classList.add('fa-check');
-                            showMessage('Added to watchlist');
-                            watchclick = true;
-                        }
-                        else{
-                            showMessage("Couldn't add to watchlist");
-                        }
-
-
+                const check = document.querySelector('.check');
+                if (watchclick === false) {
+                    let result = watchlistOperation("add");
+                    if (result) {
+                        check.classList.remove('fa-plus');
+                        check.classList.add('fa-check');
+                        showMessage('Added to watchlist');
+                        watchclick = true;
                     } else {
-                        let result = watchlistOperation("remove");
-                        if(result){
-                            check.classList.remove('fa-check');
-                            check.classList.add('fa-plus');
-                            showMessage('Removed from watchlist');
-                            watchclick = false;
-                        }
-                        else{
-                            showMessage("Couldn't remove from watchlist");
-                        }
-
+                        showMessage("Couldn't add to watchlist");
                     }
-                } else{
-                    alert("You need to be logged in to access watchlist");
+
+
+                } else {
+                    let result = watchlistOperation("remove");
+                    if (result) {
+                        check.classList.remove('fa-check');
+                        check.classList.add('fa-plus');
+                        showMessage('Removed from watchlist');
+                        watchclick = false;
+                    } else {
+                        showMessage("Couldn't remove from watchlist");
+                    }
+
                 }
-
-            });
-
-        };
-
-
-
-    async function watchlistOperation( operation) {
-        try {
-            let res =false;
-            if(operation ==="add"){
-                 console.log (<?php  echo $movie->id ?>);
-                 res =  <?php  echo $db->addWatchList($user->id,$movie->id);?>;
+            } else {
+                alert("You need to be logged in to access watchlist");
             }
-            else{
-                 res =   <?php echo $db->deleteWatchList($movie->id);?>;
+
+        });
+
+
+
+
+    async function watchlistOperation(operation) {
+        try {
+            let res = false;
+            if (operation === "add") {
+                res =  <?php  echo $db->addWatchList($user->id, $movie->id);?>;
+            } else {
+                res =   <?php echo $db->deleteWatchList($movie->id, $user->id);?>;
             }
             return res;
         } catch (error) {
             console.error(error);
         }
     }
-
-
 
 
     function showMessage(text) {
@@ -413,9 +404,6 @@ $movie = new movie($_GET['movie']);
 
 
 </script>
-
-
-
 
 
 <script>

@@ -1,6 +1,9 @@
 <?php
 
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include_once "models/User.php";
 
 class Database
@@ -73,42 +76,139 @@ class Database
 
         return null;
     }
+    public function getUserById($id): ?array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $user_data = $statement->fetch(\PDO::FETCH_ASSOC);
+        if ($user_data) {
+            return $user_data;
+        }
+
+        return null;
+    }
+
 
     public function addWatchList($userId, $movieId): bool
     {
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( user_id VARCHAR(20) ,movie_id VARCHAR(20), saved_date DATE )");
+        $us =  $userId;
+        $mov= $movieId;
 
-        $statement = $this->pdo->prepare("INSERT INTO watchlist (user_id, movie_id, saved_date) VALUES ( 'fsddsf', 'gff', NOW())");
-//        $statement->bindValue(':userid', $userId);
-//        $statement->bindValue(':movieid', $movieId);
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( movie_id INT , user_id INT , saved_date DATE)");
 
-
+        $statement = $this->pdo->prepare("INSERT INTO watchlist ( user_id  ,movie_id  , saved_date) VALUES (:userid , :movie , NOW())");
+        $statement->bindValue(':userid', $us);
+        $statement->bindValue(':movie', $mov);
 
         return $statement->execute();
     }
 
     public function loadWatchList(int $userId): array
     {
-        $statement = $this->pdo->prepare("SELECT movie_id, saved_date  FROM watchlist WHERE user_id = :id");
+        $statement = $this->pdo->prepare("SELECT user_id, saved_date  FROM watchlist WHERE movie_id = :id");
         $statement->bindValue(':id', $userId);
         $statement->execute();
 
         $movie_data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
+        // var_dump($movie_data);
+
 
         $movieIds = array();
 
         foreach ($movie_data as $row) {
-            array_push($movieIds, array($row['movie_id'], $row['saved_date']));
+            array_push($movieIds, array($row['user_id'], $row['saved_date']));
         }
         return $movieIds;
     }
 
-    public function deleteWatchList(int $movieId): bool
+    public function deleteWatchList( $movieId, $userId ): bool
     {
-        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_id = :id");
-        $statement->bindValue(':id', $movieId);
+        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_id = :userid AND user_id = :movieid");
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':movieid',  $movieId);
+
       return $statement->execute();
+
+    }
+
+    public function addFavourite($userId, $movieId): bool
+    {
+
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS favourite ( user_id INT , mov_id INT , saved_date DATE)");
+
+        $statement = $this->pdo->prepare("INSERT INTO favourite ( user_id  , mov_id , saved_date) VALUES (:userid , :movie , NOW())");
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':movie', $movieId);
+
+        return $statement->execute();
+    }
+
+    public function loadFavourite(int $userId): array
+    {
+        $statement = $this->pdo->prepare("SELECT user_id, saved_date  FROM favourite WHERE movie_id = :id");
+        $statement->bindValue(':id', $userId);
+        $statement->execute();
+
+        $movie_data = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        $movieIds = array();
+
+        foreach ($movie_data as $row) {
+            array_push($movieIds, array($row['user_id'], $row['saved_date']));
+        }
+        return $movieIds;
+    }
+
+    public function deleteFavourite( $movieId, $userId ): bool
+    {
+        $statement = $this->pdo->prepare("DELETE FROM watchlist WHERE movie_iduser = :userid && user_idmovie = :movieid");
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':movieid',  $movieId);
+
+        return $statement->execute();
+
+    }
+
+
+    public function addComplaint($userId, $message): bool
+    {
+
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS complaint ( user_id INT , message VARCHAR(300) , saved_date DATE)");
+
+        $statement = $this->pdo->prepare("INSERT INTO complaint ( user_id  , message , saved_date) VALUES (:userid , :message , NOW())");
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':message', $message);
+
+        return $statement->execute();
+    }
+
+
+    public function addReview($movieId,$userId, $mess){
+        $this->pdo->exec(   "CREATE TABLE IF NOT EXISTS reviews (
+  id INT NOT NULL AUTO_INCREMENT,
+  movie_id INT NOT NULL,
+  user_id INT NOT NULL,
+  review_text TEXT NOT NULL,
+  likes INT NOT NULL DEFAULT 0,
+  dislikes INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+)");
+
+        $statement = $this->pdo->prepare("INSERT INTO reviews (movie_id, user_id, review_text)
+VALUES (:movieid,:userid, :mess)");
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':movieid', $movieId);
+        $statement->bindValue(':mess', $mess);
+
+        return $statement->execute();
+
+    }
+
+    public function likeReview(){
 
     }
 }

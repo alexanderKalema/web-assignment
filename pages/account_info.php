@@ -36,7 +36,7 @@ $user = json_decode($_SESSION['user']);
 
 
         ?>
-        <p><strong>Email:</strong> <?php echo "<br>" . "<pre>" . $user->id . "</pre>" ?> </p>
+        <p><strong>Email:</strong> <?php echo "<br>" . "<pre>" . $user->email. "</pre>" ?> </p>
         <p><strong>Username:</strong> <?php echo "<br>" . "<pre>" . $user->username . "</pre>" ?> </p>
         <p><strong>Date of birth:</strong> <?php echo "<br>" . "<pre>" . $user->dob . "</pre>" ?> </p>
         <p><strong>Gender:</strong> <?php echo "<br>" . "<pre>" . $user->gender . "</pre>" ?> </p>
