@@ -13,7 +13,7 @@ class Database
 
     public function __construct()
     {
-        $this->pdo = new \PDO('mysql:host=localhost;port=3306;', 'root', 'Maya@1jesus');
+        $this->pdo = new \PDO('mysql:host=localhost;port=3306;', 'root', '');
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         self::$db = $this;
         $this->initalize();
@@ -98,16 +98,16 @@ class Database
 
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( movie_id INT , user_id INT , saved_date DATE)");
 
-        $statement = $this->pdo->prepare("INSERT INTO watchlist ( user_id  ,movie_id  , saved_date) VALUES (:userid , :movie , NOW())");
-        $statement->bindValue(':userid', $us);
-        $statement->bindValue(':movie', $mov);
+        $statement = $this->pdo->prepare("INSERT INTO watchlist ( user_id   , movie_id  , saved_date) VALUES (:userid , :movie , NOW())");
+        $statement->bindValue(':userid', $mov);
+        $statement->bindValue(':movie', $us);
 
         return $statement->execute();
     }
 
     public function loadWatchList(int $userId): array
     {
-        $statement = $this->pdo->prepare("SELECT movie_id, saved_date  FROM watchlist WHERE user_id = :id");
+        $statement = $this->pdo->prepare("SELECT user_id, saved_date  FROM watchlist WHERE movie_id = :id");
         $statement->bindValue(':id', $userId);
         $statement->execute();
 
@@ -116,7 +116,7 @@ class Database
         $movieIds = array();
 
         foreach ($movie_data as $row) {
-            array_push($movieIds, array($row['movie_id'], $row['saved_date']));
+            array_push($movieIds, array($row['user_id'], $row['saved_date']));
         }
         return $movieIds;
     }
