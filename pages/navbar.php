@@ -13,6 +13,7 @@ if(is_null($user)){
         <a href='../pages/tvshow.html'>TV Shows</a>
         <a href='../pages/games.php'>Games</a>
         <a href='../pages/about.html'>About us</a>
+        <a href='../pages/news.html'>News</a>
     </div>
     <a href='../index.php'><img src='../assets/intro-logo.png'></a>
 </nav>";
@@ -42,6 +43,7 @@ else{
         <a href='../pages/tvshow.html'>TV Shows</a>
         <a href='../pages/games.php'>Games</a>
         <a href='../pages/about.html'>About us</a>
+        <a href='../pages/news.html'>News</a>
     </div>
     <a href='../index.php'><img src='../assets/intro-logo.png'></a>
 </nav>";
