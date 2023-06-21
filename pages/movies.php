@@ -57,9 +57,10 @@ foreach ($categories as $category) {
         $genres_str = implode(', ', $genre_names);
 
         echo '<div class="movie-card">';
+        echo '<a href="movie_detail.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="movie poster"></a>';
         echo '<a href = "review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="movie poster"></a>';
         echo '<div class="movie-info">';
-        echo '<h3 class="movie-name">' . $title . '</h3>'; 
+        echo '<h3 class="movie-name">' . $title . '</h3>';
         echo '</div>';
         echo '</div>';
     }

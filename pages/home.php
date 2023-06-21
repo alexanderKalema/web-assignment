@@ -6,60 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Home Page</title>
-    <style>
-footer{
-    margin-top: 70px;
-    padding-top: 40px;
-    padding-bottom: 15px;
-    background-color: #404040;
-}
-.foot{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.about-us{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 50%;
-    padding-left: 250px;
-    margin: 0 auto;
-}
-.about-us-top h2{
-    color: white;
-    margin-bottom: 20px;
-    transform: translateX(-5px);
-}
-.foot-links{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-.foot-links a{
-    color: white;
-    text-decoration: none;
-}
-.foot-links a:hover{
-    color: red;
-}
-.foot-copy{
-    color: white;
-}
-.complaint{
-    display: flex;
-    flex-direction: column;
-    padding-top: 40px;
-    margin-left: auto;
-    padding-right: 30px;
-}
-.complaint p{
-    color: white;
-    margin-bottom: 10px;
-}
-    </style>
 </head>
 <body>
 
@@ -67,10 +13,27 @@ footer{
 session_start();
 $user = isset($_SESSION['user']) ? json_decode($_SESSION['user']) : null;
 $user_json = json_encode($user);
-include "navbar.php"
+include "navbar.php";
+require_once "../services/database.php";
+$db = new Database();
+function sendComplaint(): string
+{
+    if(!is_null($GLOBALS['user'])){
+        if(isset($_POST['mess'])){
+            $GLOBALS['db']->addComplaint($GLOBALS['user']->id, $_POST['mess']);
+            return json_encode("success");
+        }
+        else{
+            return json_encode("");
+        }
+
+    }
+    else{
+        return json_encode("Cant");
+    }
+}
 ?>
 <main>
-
     <div class="slider">
         <div class="slide active">
             <img src="../assets/aquman.jpg" alt="poster">
@@ -118,6 +81,8 @@ include "navbar.php"
     <?php
 
     require_once '../services/apis/movie_api.php';
+    require_once '../services/models/movie.php';
+
 
     $categories = ['popular', 'top_rated', 'upcoming'];
 
@@ -134,10 +99,12 @@ include "navbar.php"
 
         echo "<div class='wrapper'>";
         echo "<div class='cards'>";
+
         foreach ($data['results'] as $movie) {
+
             $title = $movie['title'];
-            $poster_path = "https://image.tmdb.org/t/p/w500" . $movie['poster_path'];
-            $release_date = $movie['release_date'];
+            $poster_path = "https://image.tmdb.org/t/p/w500" .  $movie['poster_path'];
+            $release_date =   $movie['release_date'];
             $popularity = $movie['popularity'];
             $genres = 'Genres:  ';
             foreach ($movie['genre_names'] as $name) {
@@ -145,7 +112,7 @@ include "navbar.php"
             }
 
             echo '<div class="movie-card">';
-            echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
+            echo '<a href="movie_detail.php?movie='.$movie['id'] .'"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
             echo '  <div class="movie-info">';
             echo '    <h1>' . $title . '</h1>';
             echo '  </div>';
@@ -155,7 +122,7 @@ include "navbar.php"
             echo '    <p>Popularity: ' . $popularity . '</p>';
             echo '  </div>';
 
-            echo '  <button>Read More &gt;</button>';
+            echo ' <a href="movie_detail.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
             echo '</div>';
         }
                 foreach ($data['results'] as $movie) {
@@ -336,23 +303,22 @@ include "navbar.php"
         </div>
         <div class="complaint">
             <p>Any Complaints? Let us know!</p>
-            <textarea cols="10" rows="2"></textarea>
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                <form method="post">
+                    <textarea name="mess" cols="10" rows="2" id="complaint-input"></textarea>
+                </form>
+
+                <button class="complain-button" id="complaint-button" >
+                    Send
+                </button>
+            </div>
+
         </div>
+
+
     </div>
 </footer>
 <script>
-
-    let user = <?php echo $user_json; ?>;
-
-    if (user) {
-        document.getElementById("signup").style.display = "none";
-        document.getElementById("profile").style.display = "block";
-    }
-    else {
-        document.getElementById("profile").remove();
-    }
-
-
 
     const slider = document.querySelector(".slider");
     const nextBtn = document.querySelector(".next-btn");
@@ -433,6 +399,34 @@ include "navbar.php"
     slider.addEventListener("mouseout", () => {
         repeater();
     });
+
+    document.getElementById('complaint-button').addEventListener('click', (event) => {
+
+        event.preventDefault();
+        let message = ""+document.getElementById("complaint-input").value;
+        if (message === ""){
+            alert("You need to add at least one character");
+        }
+        else{
+            let form = document.querySelector('form');
+            form.submit();
+            let res =  <?php echo sendComplaint();?>;
+            if (res === 'success'){
+                alert("We have received your complaint, we will work tirelessly to address your complaints as we value your opinion");
+            }
+            else if(res === 'Cant'){
+                alert("You need to login to give complaints");
+            }
+            else{
+                alert("something went wrong");
+            }
+        }
+
+
+
+
+    });
+
 </script>
 </body>
 </html>

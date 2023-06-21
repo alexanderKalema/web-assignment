@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    font-family: Poppins, serif;
+}
+
 body {
   font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -5,12 +13,18 @@ body {
     padding: 0;
     height: 100vh;
     display: flex;
-   background-image:url("../assets/got/got5.jpg") ;
     flex-direction: column;
   }
 
+#background-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: start;
+    align-items: center;
 
-  header {
+}
+header {
     background-color: rgb(51, 51, 51,0.1);
     height: 7%;
     color: white;
@@ -58,24 +72,24 @@ body {
 
 
 
-  .container {
-    margin-left: 10%;
+  .big-container {
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+
     margin-bottom: 3%;
-    padding: 2rem;
     flex: 1;
     overflow-y: auto;
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 2rem;
-    
+
   }
+
 
   .review {
     background-color: #f4f4f4;
     border-radius: 20px 5px 5px 5px;
     width: 500px;
-    height: 100px;
+    height: 130px;
     margin-right: 50px;
     padding: 1rem;
     display: flex;
@@ -85,6 +99,12 @@ body {
    
   }
 
+.user-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
   .review-text {
     margin-bottom: 1rem;
   }

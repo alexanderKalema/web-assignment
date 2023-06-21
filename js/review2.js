@@ -26,6 +26,7 @@ const addReviewButton = document.querySelector('.add-review');
 
 
 addReviewButton.addEventListener('click', () => {
+  console.log("being clice");
   addReviewText.style.display = 'block';
 });
 
@@ -34,6 +35,9 @@ const submitButton = addReviewText.querySelector('.click');
 submitButton.addEventListener('click', () => {
   const reviewText = addReviewText.querySelector('textarea').value;
   if (reviewText.trim() !== '') {
+    <?php
+        $
+        ?>
     const newReview = document.createElement('div');
     newReview.classList.add('review');
     const newReviewText = document.createElement('p');

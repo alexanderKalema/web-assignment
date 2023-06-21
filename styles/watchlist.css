@@ -1,60 +1,66 @@
-body{
-    margin:0px;
-    background-color: #242424;
-    color:white;
-}
-.header{
-   display:flex;
-   justify-content: space-between;
-   border-bottom:1px solid gray;
-   align-items:center;
-   height: 50px;
-   padding:20px;
-   padding-bottom: 10px;
-   
-}
-.hh{
-    
-    margin:0px;
-}
-.hp{
-   
-    margin:0px;
-    margin-top:12px
-}
-.container{
-    display:grid;
-    gap:20px;
-    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-    grid-template-rows: 1fr;
-    margin-top:20px;
-}
-.box > img{
-    width:100%;
-    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    font-family: Poppins, serif;
 }
 
 
-.box:hover{
-    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+    color: #333;
+}
+.movie-card {
+    display: flex;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-image {
+    width: 40%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 20px;
+    background-color: #fff;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.movie-info p {
+    font-size: 1em;
+    color: #999;
+}
+.movie-title {
+    margin: 0;
+    color: #333;
+}
+
+.remove-button {
+    align-self: flex-end;
+    padding: 20px 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    
 }
-.sidebar {
-    position: fixed; /* Fixed position to stay on top */
-    top: 0; /* Align to the top */
-    right: -100%; /* Initially hidden */
-    width: 25%; /* Adjust the width as needed */
-    height: 100%; /* Full height */
-    background-color: #f1f1f1; /* Choose a background color */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-    transition: 0.3s; /* Smooth transition */
-    padding: 1rem; /* Add some padding */
-  }
-  .content-shift {
-    margin-right: 25%; /* Shift the content by the width of the sidebar */
-    transition: 0.3s; /* Smooth transition */
-  }
-  #simg{
-    width:100%;
-  }

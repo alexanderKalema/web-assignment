@@ -2,7 +2,7 @@
 session_start();
 
 require_once 'models/User.php';
-require_once 'Database.php';
+require_once 'database.php';
 
 function randomString($n): string
 {
@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mkdir(__DIR__.'/server/images'); }
 
         if ($image && $image['tmp_name']) {
-
             $imagePath = 'images/' . randomString(8) . '/' . $image['name'];
             mkdir(dirname(__DIR__.'/server/'.$imagePath));
             move_uploaded_file($image['tmp_name'], __DIR__.'/server/'.$imagePath);
@@ -58,14 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'dob' => $_POST['dob'],
             'gender' => $_POST['gender'],
             'bio' => $_POST['bio'],
-            'path' => $imagePath
+            'profile_path' => $imagePath
         ];
 
         $user = new User();
         $user->load($data);
 
         $database = new Database();
-        $database->createUser($user);
+        $user = $database->createUser($user);
 
         $_SESSION['user'] = json_encode($user);
         header('Location: ../index.php');
