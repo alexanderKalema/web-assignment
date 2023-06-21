@@ -45,6 +45,9 @@ $user = json_decode($_SESSION['user']);
     </div>
 
     <button id="logout">Log out</button>
+    <div>
+        <button style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: #ffffff; font-family: Arial, sans-serif; font-size: 16px; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#45a049'" onmouseout="this.style.backgroundColor='#4CAF50'"><a href="watchlist.php"> Watch List</a></button>
+    </div>
 
 
 </div>

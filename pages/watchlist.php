@@ -40,14 +40,6 @@
 </div>
 <script>
 
-   function remove(userid, movieid)
-   {
-
-
-   }
-
-
-
 
 </script>
 </body>
