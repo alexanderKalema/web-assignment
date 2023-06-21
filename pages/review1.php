@@ -22,9 +22,7 @@
     
 
    
-        <div class="favorite-btn" id="favoriteBtn" onclick="handleLikeClick(this)">
-            <i class="fas fa-heart"></i>
-        </div>
+
         <div class="bookmark-movie" id="bookmark-movie">
             <div class="watchlist-btn" id="watchlistBtn">
                 <i class="icon fa fa-bookmark"></i>
