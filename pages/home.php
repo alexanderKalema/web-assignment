@@ -125,30 +125,6 @@ function sendComplaint(): string
             echo ' <a href="movie_detail.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
             echo '</div>';
         }
-                foreach ($data['results'] as $movie) {
-            $title = $movie['title'];
-            $poster_path = "https://image.tmdb.org/t/p/w500" . $movie['poster_path'];
-            $release_date = $movie['release_date'];
-            $popularity = $movie['popularity'];
-            $genres = 'Genres:  ';
-            foreach ($movie['genre_names'] as $name) {
-                $genres .= $name . " · ";
-            }
-
-            echo '<div class="movie-card">';
-            echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
-            echo '  <div class="movie-info">';
-            echo '    <h1>' . $title . '</h1>';
-            echo '  </div>';
-            echo '  <div class="movie-ratings">';
-            echo '    <p>' . $genres . '</p>';
-            echo '    <p>Release Date: ' . $release_date . '</p>';
-            echo '    <p>Popularity: ' . $popularity . '</p>';
-            echo '  </div>';
-
-            echo '  <button>Read More &gt;</button>';
-            echo '</div>';
-        }
 
         echo "</div>";
         echo "</div>";
