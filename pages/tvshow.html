@@ -11,7 +11,24 @@
     <title>Tv Shows</title>
 </head>
 <body>
+      <div class="nav-bar">
+        <div class="logo">
+            <img src="../assets/intro-logo.png" alt="logo"  onclick="window.location.href='../index.php'">
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="movies.php">Movies</a></li>
+                <li><a href="tvshow.html">Tv shows</a></li>
+                <li><a href="games.php">Games</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="news.html">News</a></li>
+            </ul>
+        </div>
+    </div>
+
   <div id="tvshows-container"></div>
+    
   <script src="../js/tvshows_api.js"></script>
 
   <script>
@@ -54,33 +71,13 @@
 
           const tvshowInfoDiv = document.createElement('div');
           tvshowInfoDiv.classList.add('tvshow-info');
-          const tvshowName = document.createElement('h1');
+          const tvshowName = document.createElement('h3');
+          tvshowName.classList.add('tvshow-name');
           tvshowName.textContent = name;
           tvshowInfoDiv.appendChild(tvshowName);
           tvshowCardDiv.appendChild(tvshowInfoDiv);
 
-          const tvshowRatingsDiv = document.createElement('div');
-          tvshowRatingsDiv.classList.add('tvshow-ratings');
-          const genreNames = getGenreNames(tvshow.genre_ids, genres);
-          const genreP = document.createElement('p');
-          genreP.textContent = `Genres: ${genreNames}`;
-          tvshowRatingsDiv.appendChild(genreP);
-          const firstAirDateP = document.createElement('p');
-          firstAirDateP.textContent = `First Air Date: ${first_air_date}`;
-          tvshowRatingsDiv.appendChild(firstAirDateP);
-          const ratingP = document.createElement('p');
-          ratingP.textContent = `Rating: ${vote_average}`;
-          tvshowRatingsDiv.appendChild(ratingP);
-          tvshowCardDiv.appendChild(tvshowRatingsDiv);
-
-          const divButton = document.createElement('div');
-          divButton.classList.add('div-button');
-          const button = document.createElement('button');
-          button.classList.add('button');
-          button.textContent = 'Read More >';
-          divButton.appendChild(button);
-          tvshowCardDiv.appendChild(divButton);
-
+          
           containerDiv.appendChild(tvshowCardDiv);
         }
 

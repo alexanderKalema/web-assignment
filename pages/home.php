@@ -36,36 +36,32 @@ function sendComplaint(): string
 <main>
     <div class="slider">
         <div class="slide active">
-            <img src="../assets/game (48).jpg" alt="">
+            <img src="../assets/aquman.jpg" alt="poster">
             <div class="info">
                 <h2>News 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+                <p>Marvel and DC cinematic universes might have a collab in the next movie.</p>
             </div>
         </div>
         <div class="slide">
-            <img src="../assets/game (138).jpg" alt="">
+            <img src="../assets/harley.jpg" alt="poster">
             <div class="info">
                 <h2>News 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+                <p>The next Suicide Squad movie to be focused on Harley's backstory.</p>
             </div>
         </div>
 
         <div class="slide">
-            <img src="../assets/game (8).jpg" alt="">
+            <img src="../assets/keanu.jpg" alt="poster">
             <div class="info">
                 <h2>News 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+                <p>Keanu Reeves retires at 52. His last movie 'John Wick 4' was a big hit.</p>
             </div>
         </div>
         <div class="slide">
-            <img src="../assets/demon_slayer.jpg" alt="">
+            <img src="../assets/transs.jpg" alt="">
             <div class="info">
                 <h2>News 4</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+                <p>The highly expected Transformers movie will hit the cinemas soon.</p>
             </div>
         </div>
 
@@ -127,6 +123,30 @@ function sendComplaint(): string
             echo '  </div>';
 
             echo ' <a href="movie_detail.php?movie='.$movie['id'] .'"> <button>Read More &gt;</button></a>';
+            echo '</div>';
+        }
+                foreach ($data['results'] as $movie) {
+            $title = $movie['title'];
+            $poster_path = "https://image.tmdb.org/t/p/w500" . $movie['poster_path'];
+            $release_date = $movie['release_date'];
+            $popularity = $movie['popularity'];
+            $genres = 'Genres:  ';
+            foreach ($movie['genre_names'] as $name) {
+                $genres .= $name . " · ";
+            }
+
+            echo '<div class="movie-card">';
+            echo '<a href="review1.php?movie=' . $title . '"><img src="' . $poster_path . '" alt="Movie Poster"></a>';
+            echo '  <div class="movie-info">';
+            echo '    <h1>' . $title . '</h1>';
+            echo '  </div>';
+            echo '  <div class="movie-ratings">';
+            echo '    <p>' . $genres . '</p>';
+            echo '    <p>Release Date: ' . $release_date . '</p>';
+            echo '    <p>Popularity: ' . $popularity . '</p>';
+            echo '  </div>';
+
+            echo '  <button>Read More &gt;</button>';
             echo '</div>';
         }
 
