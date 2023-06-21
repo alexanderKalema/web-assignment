@@ -42,14 +42,16 @@ $userr->getUser($_GET['user_id']);
     $ans = $db->getReviewsByMovieId($movie->id);
 
 
+
     foreach ($ans as $row ){
-        $path = "../services/server/". $user->path;
+        $user = $db->getUserById($row['user_id']);
+        $path = "../services/server/". $user['profile_path'];
         echo "
         
          <div class='review'>
             <div class='user-image'>
                 <img src=".$path ." alt='User Profile'>
-                 <p style='font-size: 20px; display: inline-block;'> ".  $user->username."</p>
+                 <p style='font-size: 20px; display: inline-block;'> ".  $user['username']."</p>
             </div>
            
             <p class='review-text' id='review-text'>" .$row['review_text']."</p>

@@ -294,6 +294,7 @@ $movie = new movie($_GET['movie']);
         try {
             let res = false;
             if (operation === "add") {
+
                 res =  <?php  echo $db->addWatchList($user->id, $movie->id);?>;
             } else {
                 res =   <?php echo $db->deleteWatchList($movie->id, $user->id);?>;

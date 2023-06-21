@@ -93,20 +93,20 @@ class Database
 
     public function addWatchList($userId, $movieId): bool
     {
-        $us =  $userId;
-        $mov= $movieId;
 
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( movie_id INT , user_id INT , saved_date DATE)");
 
         $statement = $this->pdo->prepare("INSERT INTO watchlist ( user_id  ,movie_id  , saved_date) VALUES (:userid , :movie , NOW())");
-        $statement->bindValue(':userid', $us);
-        $statement->bindValue(':movie', $mov);
+        $statement->bindValue(':userid', $userId);
+        $statement->bindValue(':movie', $movieId);
 
         return $statement->execute();
     }
 
     public function loadWatchList(int $userId): array
     {
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS watchlist ( movie_id INT , user_id INT , saved_date DATE)");
+
         $statement = $this->pdo->prepare("SELECT movie_id, saved_date  FROM watchlist WHERE user_id = :id");
         $statement->bindValue(':id', $userId);
         $statement->execute();
